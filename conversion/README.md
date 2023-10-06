@@ -24,6 +24,7 @@ By default, we use a 0.64-0.16-0.20 data split ratio. When `target_normalization
 For each dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. While our evaluation relies on cross-validation data splitting, we initially create separate graph dataset files for direct use in a holdout approach. Modifying the data split can be easily accomplished by adjusting a variable in the configuration file. For further details, please refer to [link to be added].
 
 **Additional Outputs:**
+
 Running the GTconvertor.py file produces several additional output files, including:
 1. Encoders: One-hot encoders for both case-level and event-level attributes, implemented using scikit-learn.
 2. Activity Classes Dictionary: A dictionary that defines activity classes.
