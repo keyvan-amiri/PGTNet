@@ -1,0 +1,29 @@
+No cases in Training dataset: 672  including 9938  events
+No of cases in Validation dataset: 168  including 2337  events
+No of cases in Test dataset: 210  including 2939  events
+node type dimension: 16
+edge feature size: 250
+Max case duration: 422.3239467592593 goal: temporal features + target value normalization
+Maximum number of DF relationships cases in the log: 42
+Maximum number of active cases in the log: 81
+Minimum values for numerical case attributes []
+Maximum values for numerical case attributes []
+Minimum values for numerical event attributes [20.0, 0.2, 5.0, 0.2]
+Maximum values for numerical event attributes [90.0, 381.3, 573.0, 14.9]
+Number of graphs in dataset: 13114
+Number of graphs in training dataset: 8594
+Number of graphs in validation dataset: 2001
+Number of graphs in test dataset: 2519
+An example for graph data: Data(x=[2, 1], edge_index=[2, 1], edge_attr=[1, 250], y=0.013211647048592567, cid='C', pl=2)
+some examples for target attribute: [tensor(0.0132), tensor(0.0132), tensor(0.0132), tensor(0.0132), tensor(0.0132)]
+Mean for target attribute: 0.08350679
+Standard deviation for target attribute: 0.1487741
+mean cycle time for training: 0.09880065
+std cycle time for training: 0.16934843
+max cycle time for training: 0.9999941
+mean cycle time for validation: 0.06721309
+std cycle time for validation: 0.11020492
+max cycle time for validation: 0.57204705
+mean cycle time for test: 0.044272285
+std cycle time for test: 0.07204265
+max cycle time for test: 0.47000498
