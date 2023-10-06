@@ -1,0 +1,7 @@
+dataset_name: BPI_Challenge_2012.xes
+event_attributes: ['org:resource'] # categorical event attributes
+event_num_att: []  # numerical event attributes
+case_attributes: [] # categorical case attributes: enter name of attributes without 'case:'
+case_num_att: ['AMOUNT_REQ'] # numerical case attributes: enter name of attributes without 'case:'
+train_val_test_ratio: [0.64, 0.16, 0.2]
+target_normalization: True

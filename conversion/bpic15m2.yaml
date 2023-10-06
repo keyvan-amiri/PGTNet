@@ -1,0 +1,7 @@
+dataset_name: BPIC15_2.xes
+event_attributes: ['org:resource', 'monitoringResource'] # categorical event attributes
+event_num_att: []  # numerical event attributes
+case_attributes: ['caseStatus', 'last_phase', 'Responsible_actor', 'parts', 'termName', 'requestComplete', 'caseProcedure', 'Includes_subCases'] # categorical case attributes: enter name of attributes without 'case:'
+case_num_att: ['SUMleges'] # numerical case attributes: enter name of attributes without 'case:'
+train_val_test_ratio: [0.64, 0.16, 0.2]
+target_normalization: True
