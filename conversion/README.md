@@ -30,7 +30,7 @@ Running the GTconvertor.py file produces several additional output files, includ
 2. Activity Classes Dictionary: A dictionary that defines activity classes.
 3. Filtered Cases: A list of case IDs for cases that do not have at least three events.
 4. Statistics: A text file describing general statistics for each graph dataset. All produced files of this type in [location to be added].
-5. Histogram Visualization: A PNG file that visualizes the distribution of target attribute values. All produced files of this type in [Target attribute: histogram visualization]( https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/target%20attribute%20distribution).
+5. Histogram Visualization: A PNG file that visualizes the distribution of target attribute values. All produced files of this type in [Target attribute: histogram visualization](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/target%20attribute%20distribution).
 
 
   
