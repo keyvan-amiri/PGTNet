@@ -275,8 +275,10 @@ def graph_conversion_func (split_log, removed_cases, idx, data_list, case_attrib
                     target_indices = [i for i, x in enumerate(prefix_event_classes) if x == prefix_classes[edge[1]]]
                     acceptable_indices = [(x, y) for x in source_indices for y in target_indices if x + 1 == y]
                     special_feat = np.empty((0,)) # collect all special features
+                    # Add edge weights to the special feature vector
                     num_occ = len(acceptable_indices)/max_case_df
                     special_feat = np.append(special_feat, np.array(num_occ))
+                    # Add temporal features to the special feature vector
                     sum_dur = 0
                     for acceptable_index in acceptable_indices:
                         last_dur = (prefix_times[acceptable_index[1]]- prefix_times[acceptable_index[0]]).total_seconds()/3600/24/max_time_norm
