@@ -9,15 +9,23 @@ To get started, follow these steps:
 2. Navigate to the `conversion` directory.
 3. Set up an environment with using Conda: `conda create -n GraphTrans python=3.10` and activate it: `conda activate GraphTrans`
 4. Install required libraries:
+   
    `pip install PyYAML`
+   
    `pip install numpy`
+   
    `pip install pm4py`
+   
    `pip install scikit-learn`
+   
    `pip install scikit-learn`
+   
    `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch` (Use suitable version depending on your hardware, see: )
+   
    `pip install torch-geometric`
-5. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset should be changed based on a variable called `dataset_name`  in the relevant configuration (.yml) file or equivalently name of this variable should be adjusted based on the name of the dataset.
-6. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
+   
+6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset should be changed based on a variable called `dataset_name`  in the relevant configuration (.yml) file or equivalently name of this variable should be adjusted based on the name of the dataset.
+7. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
 The resultant graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
 
 **Configuration Files:**
