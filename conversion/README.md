@@ -32,7 +32,7 @@ Running the GTconvertor.py file produces several additional output files, includ
 3. Filtered Cases: A list of case IDs for cases that do not have at least three events.
 4. Histogram Visualization: A PNG file that visualizes the distribution of target attribute values. All produced files of this type can be found in [Target attribute: histogram visualization](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/target%20attribute%20distribution).
 
-**Note:** We provide an additional text file describing general statistics for each graph dataset see: [General statistics for graph datasets](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/statistics).
+**Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/statistics).
 
 
   
