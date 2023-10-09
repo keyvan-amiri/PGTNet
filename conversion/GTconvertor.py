@@ -176,7 +176,7 @@ def get_global_stat_func (training_validation_log, training_validation_df, case_
         event_min_num_list, event_max_num_list, attribute_encoder_list, case_encoder_list,\
             node_dim, edge_dim, avg_num_list, event_avg_num_list
 
-# main function for converting ecent log into graph dataset
+# main function for converting an event log into graph dataset
 def graph_conversion_func (split_log, removed_cases, idx, data_list, case_attributes, case_encoder_list,
                            case_num_att, min_num_list, max_num_list, event_attributes, event_num_att,
                            target_normalization, max_time_norm, node_class_dict, edge_dim, max_case_df,
@@ -348,7 +348,7 @@ def main(yml_file):
             train_val_log, max_time_norm, sorted_start_dates,\
                 sorted_end_dates = train_test_split_func(log, event_log, split_ratio)
         # Get global information required for transformation (only use training and validation sets)
-        # for categorical attributes: no leakage if we use all observed values (one-hot encoding)
+        # We use all observed values for categorical attributes (one-hot encoding).
         node_class_dict, max_case_df, max_active_cases, min_num_list, max_num_list, event_min_num_list,\
             event_max_num_list,attribute_encoder_list,case_encoder_list, node_dim, edge_dim,\
                 avg_num_list, event_avg_num_list = get_global_stat_func(train_val_log, train_val_df,
