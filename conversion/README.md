@@ -7,7 +7,8 @@ This section of the implementation focuses on the conversion of an event log int
 To get started, follow these steps:
 1. Clone this repository.
 2. Navigate to the `conversion` directory.
-3. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
+3. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are available on ... Name of the dataset should be changed based on the variable called `dataset_name`  the relevant configuration (.yml) file or name of this variable should be adjusted based on the name of the relevant dataset.
+4. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
 The resulting graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
 
 **Configuration Files:**
