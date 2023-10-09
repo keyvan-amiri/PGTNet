@@ -7,11 +7,11 @@ This section of the implementation focuses on the conversion of an event log int
 To get started, follow these steps:
 1. Clone this repository.
 2. Navigate to the `conversion` directory.
-3. Set up an environment with all required libraries using Conda: `conda env create -f environment.yml` `conda create -n GraphTrans python=3.10` , `conda activate GraphTrans`
-4. 
-5. Install all requirements using pip: `pip install -r requirements.txt` 
+3. Set up an environment with all required libraries using Conda: `conda env create -f environment.yml`
+4. Activate the environment: `conda activate GraphTrans` `conda create -n GraphTrans python=3.10`
+5. Install all requirements using pip: `pip install -r requirements.txt`
 6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset should be changed based on a variable called `dataset_name`  in the relevant configuration (.yml) file or equivalently name of this variable should be adjusted based on the name of the dataset.
-8. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
+7. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
 The resultant graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
 
 **Configuration Files:**
