@@ -9,13 +9,13 @@ To get started, follow these steps:
 2. Navigate to the `conversion` directory.
 3. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset should be changed based on a variable called `dataset_name`  in the relevant configuration (.yml) file or equivalently name of this variable should be adjusted based on the name of the dataset.
 8. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
-The resulting graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
+The resultant graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
 
 **Configuration Files:**
 
 Each configuration file defines global variables specific to the dataset, including:
-1. Categorical and numerical attribute names at both the event-level and case-level.
-2. Dataset name.
+1. `raw_dataset`: name of the raw dataset (i.e., event log).
+2. Categorical and numerical attribute names at both the event-level and case-level: `event_attributes`, `event_num_att`, `case_attributes`, `case_num_att`.
 3. Training, validation, and test data ratio.
 4. A boolean attribute called `target_normalization`.
 By default, we use a 0.64-0.16-0.20 data split ratio. When `target_normalization` is set to True (the default value), the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one.
