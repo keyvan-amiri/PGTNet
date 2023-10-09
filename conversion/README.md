@@ -1,6 +1,6 @@
 **Implementation Overview:**
 
-This section of the implementation focuses on the conversion of an event log into a graph dataset. While conversion is not mandatory for training GPS graph transformer networks, we have provided our source code for the sake of transparency and to encourage the use of our proposal with other datasets.
+This section of the implementation focuses on the conversion of an event log into a graph dataset. This data transformation is not mandatory for training the downstream GPS graph transformer network because we already uploaded the resultant graph dataset in this repository. However, we have provided our source code for the sake of transparency and to encourage the use of our proposal with other datasets or even different graph representation of event prefixes.
 
 **Instructions:**
 
