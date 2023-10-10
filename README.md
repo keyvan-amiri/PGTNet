@@ -10,5 +10,5 @@ _<a name="part2-1">2.1. Original implementation of the GPS graph transformers, a
 
 Our porposal is based on the original implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). Therefore, the first step is to clone the original repository and follow the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda) for setting up a Python environement with Conda.
 
-_**<a name="part2-2">2.2. Adjustments to the original implementation:</a>**_
+_<a name="part2-2">2.2. Adjustments to the original implementation:</a>_
 
