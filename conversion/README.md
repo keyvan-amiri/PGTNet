@@ -24,7 +24,7 @@ The resultant graph dataset will be saved in a seperate folder for each event lo
 
 Each configuration file defines global variables specific to the dataset, including:
 1. `raw_dataset`: name of the raw dataset (i.e., event log).
-2. `event_attributes`, `event_num_att`, `case_attributes`, `case_num_att`: Categorical and numerical attribute names at both the event-level and case-level.
+2. `event_attributes`, `event_num_att`, `case_attributes`, `case_num_att`: Categorical and numerical attribute names at both the event-level and case-level. The implementation provides the opportunity to experiment with different combinations for these variables. Therefore, it is easy to conduct ablation studies or investigate contribution of different attributes to the accuracy of predictions. 
 3. `train_val_test_ratio`: Training, validation, and test data ratio.
 4. A boolean attribute called `target_normalization`.
 By default, we use a 0.64-0.16-0.20 data split ratio. When `target_normalization` is set to True (the default value), the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one. This normalization proved to be helpful because the target attribuite often has a highly skewed distribution: see [Target attribute: histogram visualization](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/target%20attribute%20distribution).
