@@ -16,7 +16,7 @@ To get started, follow these steps:
    `pip install scikit-learn`
    `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch` (Use suitable version depending on your hardware, see: [Installation Guide](https://pytorch.org/get-started/locally/)
    `pip install torch-geometric`
-6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset should be changed based on a variable called `dataset_name`  in the relevant configuration (.yml) file or equivalently name of this variable should be adjusted based on the name of the dataset.
+6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset should be the same value assigned to a variable called `dataset_name`  in the relevant configuration (.yml).
 7. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
 The resultant graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
 
