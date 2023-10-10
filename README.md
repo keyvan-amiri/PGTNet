@@ -14,5 +14,5 @@ _<a name="part2-2">2.2. Adjustments to the original implementation:</a>_
 
 Once requirements of [2.1.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part2-1) are met, the cloned version of the original implementation should be adjusted as per follows:
 1. Replace `main.py` file in the root directory of the `GPS repository` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/main.py) in this repository. Here, the most important change is that a train mode called 'event-inference' is added to customize the inference step.
-2. Move to the directory `/graphgps/loader` in the `GPS repository` and replace `master_loader.py` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/main.py) in this repository. Here, the most important change is that several new dataset classes are added to handle graph representation of event logs.
+2. Move to the directory `/graphgps/loader` in the `GPS repository` and replace `master_loader.py` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/master_loader.py) in this repository. Here, the most important change is that several new dataset classes are added to handle graph representation of event logs.
 3. 
