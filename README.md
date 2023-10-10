@@ -29,11 +29,13 @@ Once requirements of [2.2.](https://github.com/keyvan-amiri/GT-Remaining-CycleTi
 For training use commands like: 
 
 `python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_multiple_splits [0,1,2,3,4] seed 42`
-(Note: Replace the configuration file name, and seed number)
+
+(Note: replace the configuration file name, and seed number)
 
 _<a name="part2-4">2.4. Inference with GPS graph transformer networks:</a>_
 
-The inference can be similarly achieved. To do so, use commands like (replace the configuration file name, and seed number): 
+The inference can be similarly achieved. To do so, use commands like: 
 
 `python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference.yaml run_multiple_splits [0,1,2,3,4] seed 42`
-(Note: Replace the configuration file name, and seed number)
+
+(Note: replace the configuration file name, and seed number)
