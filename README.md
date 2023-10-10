@@ -7,4 +7,5 @@ Converting event logs into graph datasets. For more information, see: [conversio
 **2. Training and evaluation of GPS graph transformers:**
 
 _Original implementation of the GPS graph transformers, and setting up a python environment:_
+
 Our porposal is based on the original implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). Therefore, the first step is to clone the original repository and follow the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda) for setting up a Python environement with Conda.
