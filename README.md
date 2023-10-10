@@ -24,4 +24,16 @@ d. Move to the directory `/graphgps/encoder` in the `GPS repository` and replace
 
 _<a name="part2-3">2.3. Training a GPS graph transformer network:</a>_
 
-Once requirements of [2.2.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part2-2) are met, training the network is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All you need is to ensure that the relevant configuration file is already copied to `/configs/GPS` directory in the `GPS repository`. To replicate our experiment, you need configuration files upoladed in this directory. To do so, run commands in the following format: `python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_multiple_splits [0,1,2,3,4] seed 42`. We conducted our experiment using three different random seeds: 42,56,89.
+Once requirements of [2.2.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part2-2) are met, training the network is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to replicate our experiment are collected in this [directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/configs/GPS). Please ensure that all relevant configuration files are copied to `/configs/GPS` directory in the `GPS repository` (i.e. the original implementation of GPS graph transformer). As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated GPS graph transformer networks using three different random seeds: 42,56,89.
+
+For training use commands like: 
+
+`python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_multiple_splits [0,1,2,3,4] seed 42`
+(Note: Replace the configuration file name, and seed number)
+
+_<a name="part2-4">2.4. Inference with GPS graph transformer networks:</a>_
+
+The inference can be similarly achieved. To do so, use commands like (replace the configuration file name, and seed number): 
+
+`python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference.yaml run_multiple_splits [0,1,2,3,4] seed 42`
+(Note: Replace the configuration file name, and seed number)
