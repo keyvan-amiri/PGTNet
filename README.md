@@ -13,4 +13,4 @@ Our porposal is based on the original implementation of [GraphGPS: General Power
 _<a name="part2-2">2.2. Adjustments to the original implementation:</a>_
 
 Once requirements of [2.1.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part2-1) are met, the cloned version of the original implementation should be adjusted as per follows:
-1. Replace `main.py` file in the root directory by its updated version which can be found in. 
+1. Replace `main.py` file in the root directory of the original implementation by the one with same name in this repository. Here, the most important change is that we added a train mode 'event-inference' to customize the inference step.
