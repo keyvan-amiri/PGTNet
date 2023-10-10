@@ -16,7 +16,7 @@ To get started, follow these steps:
    `pip install scikit-learn`
    `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch` (Use suitable version depending on your hardware, see: [Installation Guide](https://pytorch.org/get-started/locally/)
    `pip install torch-geometric`
-6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset should be the same value assigned to a variable called `dataset_name`  in the relevant configuration (.yml).
+6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset must be the same one that is assigned to a variable called `dataset_name`  in the relevant configuration (.yml).
 7. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
 The resultant graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
 
@@ -27,7 +27,7 @@ Each configuration file defines global variables specific to the dataset, includ
 2. `event_attributes`, `event_num_att`, `case_attributes`, `case_num_att`: Categorical and numerical attribute names at both the event-level and case-level.
 3. `train_val_test_ratio`: Training, validation, and test data ratio.
 4. A boolean attribute called `target_normalization`.
-By default, we use a 0.64-0.16-0.20 data split ratio. When `target_normalization` is set to True (the default value), the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one.
+By default, we use a 0.64-0.16-0.20 data split ratio. When `target_normalization` is set to True (the default value), the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one. This normalization proved to be helpful since we have highly skewed distribution for the target attribuite: see [Target attribute: histogram visualization](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/target%20attribute%20distribution).
 
 **Dataset Structure:**
 
