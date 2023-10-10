@@ -8,9 +8,11 @@ Converting event logs into graph datasets. For more information, see: [conversio
 
 _<a name="part2-1">2.1. Original implementation of the GPS graph transformers, and setting up a python environment:</a>_
 
-Our porposal is based on the original implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). Therefore, the first step is to clone the original repository and follow the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda) for setting up a Python environement with Conda.
+Our porposal is based on the original implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). We call this repository  `GPS repository` in the remaining of this README file. The first step is to clone the `GPS repository` (i.e. the original implementation) and follow the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda) for setting up a Python environement with Conda.
 
 _<a name="part2-2">2.2. Adjustments to the original implementation:</a>_
 
 Once requirements of [2.1.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part2-1) are met, the cloned version of the original implementation should be adjusted as per follows:
-1. Replace `main.py` file in the root directory of the original implementation by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/main.py) in this repository. Here, the most important change is that a train mode called 'event-inference' is added to customize the inference step. 
+1. Replace `main.py` file in the root directory of the `GPS repository` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/main.py) in this repository. Here, the most important change is that a train mode called 'event-inference' is added to customize the inference step.
+2. Move to the directory `/graphgps/loader` in the `GPS repository` and replace `master_loader.py` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/main.py) in this repository. Here, the most important change is that several new dataset classes are added to handle graph representation of event logs.
+3. 
