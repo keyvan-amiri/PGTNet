@@ -1,7 +1,7 @@
 # PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances
 This is the supplementary githob repository of the paper: "PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances".
 
-Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GPS Graph Transformer recipe](https://github.com/rampasek/GraphGPS).
+Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe. We call this repository the  `GPS repository` in the remaining of this README file. Additionally, we call present repository the `PGTNet repository`. The first thing to do is to clone both repositories.
 
 **<a name="part1">1. Data preparation:</a>**
 Converting event logs into graph datasets. For more information, see: [conversion directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion). We already uploaded generated graph datasets in [conversion/transformation directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/transformation) in this repository. Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are directly used in the second step to train and evaluaate GPS graph transformers.
@@ -10,7 +10,7 @@ Converting event logs into graph datasets. For more information, see: [conversio
 
 _<a name="part2-1">2.1. Original implementation of the GPS graph transformers, and setting up a python environment:</a>_
 
-Our porposal is based on the original implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). We call this repository  `GPS repository` in the remaining of this README file. The first step is to clone the `GPS repository` (i.e. the original implementation) and follow the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda) for setting up a Python environement with Conda.
+The first step is to clone the `GPS repository` (i.e. the original implementation) and follow the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda) for setting up a Python environement with Conda.
 
 _<a name="part2-2">2.2. Adjustments to the original implementation:</a>_
 
