@@ -13,7 +13,6 @@ To get started, follow these steps:
    `pip install numpy`
    `pip install pm4py`
    `pip install scikit-learn`
-   `pip install scikit-learn`
    `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch` (Use suitable version depending on your hardware, see: [Installation Guide](https://pytorch.org/get-started/locally/)
    `pip install torch-geometric`
 6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset must be the same one that is assigned to a variable called `dataset_name`  in the relevant configuration (.yml).
