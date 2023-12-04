@@ -1,5 +1,6 @@
-# GT-Remaining-CycleTime
-GPS graph transformers can be used to predict remaining cyle time of business process instances in a two-step approach:
+# PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances
+This is the supplementary githob repository of the paper: "PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances".
+Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GPS Graph Transformer recipe](https://github.com/rampasek/GraphGPS).
 
 **<a name="part1">1. Data preparation:</a>**
 Converting event logs into graph datasets. For more information, see: [conversion directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion). We already uploaded generated graph datasets in [conversion/transformation directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/transformation) in this repository. Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are directly used in the second step to train and evaluaate GPS graph transformers.
