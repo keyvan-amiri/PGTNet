@@ -3,7 +3,7 @@ This is the supplementary githob repository of the paper: "PGTNet: A Process Gra
 
 Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe (It is called the  **GPS repository** in the remaining of this README file). In order to start your experiments with PGTNet, the first thing to do is to clone both **GPS repository** and **PGTNet repository**.
 
-Follow the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda) for setting up a Python environement with Conda.
+Based on the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda), you need to set up a Python environement with Conda.
 
 Once you setup a conda environement and installed all libraries required for woring with GPS Graph Transformers, copy the **PGTNet repository** into the main directory that is used for **GPS repository**. 
 
