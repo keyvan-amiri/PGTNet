@@ -23,8 +23,14 @@ pip install tensorboardX
 pip install ogb
 pip install wandb
 
+pip install PyYAML
+pip install numpy
+pip install pm4py
+pip install scikit-learn
+
 conda clean --all
 ```
+Note that we included pip install commands required for working with event log data (e.g., [pm4py](https://pm4py.fit.fraunhofer.de/) library).
 
 Once you setup a conda environement and installed all libraries required for woring with GPS Graph Transformers, copy the **PGTNet repository** into the main directory that is used for **GPS repository**. 
 
