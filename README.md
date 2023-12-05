@@ -82,7 +82,7 @@ The resultant graph dataset will be saved in a seperate folder within **datasets
 4. Histogram: A PNG file that visualizes the distribution of target attribute values.
 All additional ouputs are saved in a separate folder called **transformation** in the root directory of **PGTNet repository**. 
 
-**Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/PGTNet/tree/main/graph dataset statistics).
+**Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/PGTNet/tree/main/graph_dataset_statistics).
 
 **<a name="part4">4. Training and evaluation of GPS graph transformers:</a>**
 
