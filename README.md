@@ -1,7 +1,7 @@
 # PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances
 This is the supplementary githob repository of the paper: "PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances".
 
-Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe (It is called the  **GPS repository** in the remaining of this README file). 
+Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe. 
 
 **<a name="part1">1. Set up a Python environement to work with GPS Graph Transformers:</a>**
 
@@ -31,9 +31,10 @@ pip install scikit-learn
 conda clean --all
 ```
 Note that we included pip install commands required for working with event log data (e.g., [pm4py](https://pm4py.fit.fraunhofer.de/) library).
-In order to start your experiments with PGTNet, the first thing to do is to clone both **GPS repository** and **PGTNet repository**.
 
-Once you setup a conda environement and installed all libraries required for woring with GPS Graph Transformers, copy the **PGTNet repository** into the main directory that is used for **GPS repository**. The structure should be like this:
+**<a name="part2">2. Clone repositories and download event logs:</a>**
+
+Once you setup a conda environement and installed all libraries required for working with GPS Graph Transformers, you need to clone GraphGPS: General Powerful Scalable Graph Transformers [repository](https://github.com/rampasek/GraphGPS) (It is called the  **GPS repository** in the remaining of this README file) as well as the current repository (i.e., the **PGTNet repository**). The **PGTNet repository** should be placed in one folder with the directory that is used as the root directory of **GPS repository**. The structure should be like this:
 ```
 GraphGPS
 │
