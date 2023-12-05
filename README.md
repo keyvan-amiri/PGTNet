@@ -34,7 +34,7 @@ Note that we included pip install commands required for working with event log d
 
 **<a name="part2">2. Clone repositories and download event logs:</a>**
 
-Once you setup a conda environement and installed all libraries required for working with GPS Graph Transformers, you need to clone GraphGPS: General Powerful Scalable Graph Transformers [repository](https://github.com/rampasek/GraphGPS) (It is called the  **GPS repository** in the remaining of this README file) as well as the current repository (i.e., the **PGTNet repository**). The **PGTNet repository** should be placed in one folder with the directory that is used as the root directory of **GPS repository**. The structure should be like this:
+Once you setup a conda environement, clone the [GPS Graph Transformer repository](https://github.com/rampasek/GraphGPS) (It is called the  **GPS repository** in the remaining of this README file) as well as the current repository (i.e., the **PGTNet repository**). The **PGTNet repository** should be placed in one folder with the directory that is used as the root directory of **GPS repository**. The structure should be like this:
 ```
 GraphGPS
 │
