@@ -386,8 +386,8 @@ def main(directory, yml_file, overwrite):
         dataset_name_no_ext = os.path.splitext(dataset_name)[0] #dataset name: without .xes extension
         graph_dataset_class_name = eventlog_class_provider(dataset_name_no_ext)
         output_address_list = ['train.pickle', 'val.pickle', 'test.pickle']
-        parent_directory = os.path.dirname(os.getcwd()) #path to dataset folder
-        datasets_directory =  os.path.join(parent_directory, "datasets")
+        parent_directory = os.path.dirname(os.getcwd()) 
+        datasets_directory =  os.path.join(parent_directory, "datasets") #path to dataset folder
         if not os.path.exists(datasets_directory):
             os.makedirs(datasets_directory)
         graph_dataset_path =  os.path.join(datasets_directory, graph_dataset_class_name)
