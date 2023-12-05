@@ -40,21 +40,8 @@ We will call the cloned repository as **GPS repository** in the remaining of thi
 cd GraphGPS
 git clone https://github.com/keyvan-amiri/PGTNet
 ```
- The **PGTNet repository** should be placed in one folder with the directory that is used as the root directory of **GPS repository**. The structure should be like this:
-```
-GraphGPS
-│
-├── configs
-├── graphgps
-├── PGTNet
-├── run
-├── tests
-├── unittests
-├── main.py
-├──
-├──
-└── README.md
-```
+By doing so, the **PGTNet repository** will be placed in the root directory of **GPS repository** meaning that the latter is the parent directory for the former.
+
 Now, we are ready to download all event logs that are used in our experiments. Note that, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). In case you want to start with training PGTNet, you can skip this step as well as the next step, and refer to [training](https://github.com/keyvan-amiri/PGTNet#part4) step. However, we have provided our source code for the sake of transparency. This source code also facilitates the use of PGTNet for other predictive process monitoring tasks (e.g., next activity prediction, next timestamp prediction, suffix prediction, outcome prediction), and indeed for a broader range of event logs. Our source code for conversion can also be adjusted to accomodate different graph representation of event prefixes.
 
 To download all event logs run the following command:
