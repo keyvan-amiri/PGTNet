@@ -90,24 +90,22 @@ For each graph dataset, three separate files are generated for the training, val
 **<a name="part4">4. Training and evaluation of PGTNet for remaining time prediction:</a>**
 
 To train and evaluate PGTNet, we employ the implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). However, in order to use it for remaining time prediction of business process instances, you need to adjust some part of the original implementation. This can be achieved by running the following command:
+```
+python file_transfer.py
+```
+This script copies 5 important python scripts including are required adjustments:
 
+a. In `main.py` , the most important change is that a train mode called 'event-inference' is added to customize the inference step.
 
+b. In `master_loader.py`, the most important change is that several new dataset classes are added to handle graph representation of event logs.
 
+c. The python script `GTeventlogHandler.py` includes multiple `InMemoryDataset` Pytorch Geometric classes. We created one seperate class for each event log.
 
+d. The python scripts `linear_edge_encoder.py` and `two_layer_linear_edge_encoder.py` are specifically designed for edge embedding in the remaining cycle time prediction problem.
 
-Once requirements of [4.1.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part4-1) are met, the cloned version of the original implementation should be adjusted as per follows:
+Once abobementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to replicate our experiments are collected in this [directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/configs/GPS).
 
-a. Replace `main.py` file in the root directory of the `GPS repository` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/main.py) in this repository. Here, the most important change is that a train mode called 'event-inference' is added to customize the inference step.
-
-b. Move to the directory `/graphgps/loader` in the `GPS repository` and replace `master_loader.py` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/master_loader.py) in this repository. Here, the most important change is that several new dataset classes are added to handle graph representation of event logs.
-
-c. Copy `GTeventlogHandler.py` from this repository and paste it in the directory `/graphgps/loader/dataset` in the `GPS repository`. [This file](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/GTeventlogHandler.py) includes multiple `InMemoryDataset` Pytorch Geometric classes. We created one seperate class for each event log.
-
-d. Move to the directory `/graphgps/encoder` in the `GPS repository` and replace `linear_edge_encoder.py` by [the one with same name](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/linear_edge_encoder.py) in this repository. Additionally, you need to copy the [file](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/blob/main/two_layer_linear_edge_encoder.py) `two_layer_linear_edge_encoder.py` from this repository and paste it in the same directory: `/graphgps/encoder` in the `GPS repository`. These two files are specifically designed for edge embedding in the remaining cycle time prediction problem.
-
-_<a name="part4-3">4.3. Training a GPS graph transformer network:</a>_
-
-Once requirements of [4.2.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part4-2) are met, training the network is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to replicate our experiments are collected in this [directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/configs/GPS). Please ensure that all relevant configuration files are copied to `/configs/GPS` directory in the `GPS repository` (i.e. the original implementation of GPS graph transformer). As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated GPS graph transformer networks using three different random seeds: 42,56,89.
+Please ensure that all relevant configuration files are copied to `/configs/GPS` directory in the `GPS repository` (i.e. the original implementation of GPS graph transformer). As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated GPS graph transformer networks using three different random seeds: 42,56,89.
 
 For training use commands like: 
 
