@@ -89,7 +89,7 @@ For each graph dataset, three separate files are generated for the training, val
 
 **<a name="part4">4. Training and evaluation of PGTNet for remaining time prediction:</a>**
 
-To train and evaluate PGTNet, we use the implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). However, in order to use it for remaining time prediction of business process instances, you need to adjust some part of the original implementation. This can be achieved by running the following command:
+To train and evaluate PGTNet, we employ the implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). However, in order to use it for remaining time prediction of business process instances, you need to adjust some part of the original implementation. This can be achieved by running the following command:
 
 
 
