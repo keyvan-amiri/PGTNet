@@ -20,14 +20,14 @@ pip install tensorboardX
 pip install ogb
 pip install wandb
 
-pip install PyYAML
-pip install numpy
 pip install pm4py
-pip install scikit-learn
+#pip install PyYAML #Requirement already satisfied
+#pip install numpy  #Requirement already satisfied
+#pip install scikit-learn #Requirement already satisfied
 
 conda clean --all
 ```
-Note that we included pip install commands required for working with event log data (e.g., [pm4py](https://pm4py.fit.fraunhofer.de/) library).
+Note that we included pip install command required for working with event log data (i.e., [pm4py](https://pm4py.fit.fraunhofer.de/) library). For other libraries, namely PyYAML numpy scikit-learn requirements should be already satisfied. Therefore, we do not need to install them separately (commented in the above piece of commands). 
 
 **<a name="part2">2. Clone repositories and download event logs:</a>**
 
