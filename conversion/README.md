@@ -1,21 +1,10 @@
 **Implementation Overview:**
 
-This section of the implementation focuses on the conversion of an event log into a graph dataset. This data transformation is not mandatory for training the downstream GPS graph transformer network because we already uploaded the resultant graph dataset in [this repository](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/transformation). However, we have provided our source code for the sake of transparency and to encourage the use of our proposal with other datasets or even different graph representation of event prefixes.
+This section of the implementation focuses on the conversion of an event log into a graph dataset. . However, we have provided our source code for the sake of transparency and to encourage the use of our proposal with other datasets or even different graph representation of event prefixes.
 
 **Instructions:**
 
-To get started, follow these steps:
-1. Clone this repository.
-2. Navigate to the `conversion` directory.
-3. Set up an environment with using Conda: `conda create -n GraphTrans python=3.10` and activate it: `conda activate GraphTrans`
-4. Install required libraries:
-   `pip install PyYAML`
-   `pip install numpy`
-   `pip install pm4py`
-   `pip install scikit-learn`
-   `conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch` (Use suitable version depending on your hardware, see: [Installation Guide](https://pytorch.org/get-started/locally/)
-   `pip install torch-geometric`
-6. In `conversion` directory there is another directory called `raw_dataset`. Download the relevant dataset and copy it into `raw_dataset`. All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). Name of the dataset must be the same one that is assigned to a variable called `dataset_name`  in the relevant configuration (.yml).
+Name of the dataset must be the same one that is assigned to a variable called `dataset_name`  in the relevant configuration (.yml).
 7. Run the`GTconvertor.py`  file using the relevant configuration file. For instance: `python GTconvertor.py bpic15m1.yaml`
 The resultant graph dataset will be saved in a seperate folder for each event log in a directory called `transformation`.
 
