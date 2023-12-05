@@ -87,13 +87,13 @@ All additional ouputs are saved in a separate folder called **transformation** i
 For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. Loading a graph dataset to train a GPS graph transformer is done using one single zip file including all these three parts. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called `split_mode` in the relevant training configuration file. 
 
 
-**<a name="part4">4. Training and evaluation of GPS graph transformers:</a>**
+**<a name="part4">4. Training and evaluation of PGTNet for remaining time prediction:</a>**
 
-_<a name="part4-1">4.1. Original implementation of the GPS graph transformers, and setting up a python environment:</a>_
+To train and evaluate PGTNet, we use the implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). However, in order to use it for remaining time prediction of business process instances, you need to adjust some part of the original implementation. This can be achieved by running the following command:
 
 
 
-_<a name="part4-2">4.2. Adjustments to the original implementation:</a>_
+
 
 Once requirements of [4.1.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part4-1) are met, the cloned version of the original implementation should be adjusted as per follows:
 
