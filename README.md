@@ -49,7 +49,9 @@ GraphGPS
 ├──
 └── README.md
 ```
-Now, we are ready to download all event logs that are used in our experiments. Note that, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). In case you want to start with training PGTNet, you can skip this part as well as the [next part](https://github.com/keyvan-amiri/PGTNet#part3), and refer to [training part](https://github.com/keyvan-amiri/PGTNet#part4). To download all event logs run the following command:
+Now, we are ready to download all event logs that are used in our experiments. Note that, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). In case you want to start with training PGTNet, you can skip this step as well as the next step, and refer to [training](https://github.com/keyvan-amiri/PGTNet#part4) step.
+
+To download all event logs run the following command:
 ```
 python data-acquisition.py
 ```
