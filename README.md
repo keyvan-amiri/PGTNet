@@ -47,7 +47,9 @@ GraphGPS
 ├──
 └── README.md
 ```
-**<a name="part1">2. Data preparation:</a>**
+
+**<a name="part1">2. Converting an event log into a graph dataset:</a>**
+
 Converting event logs into graph datasets. For more information, see: [conversion directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion). We already uploaded generated graph datasets in [conversion/transformation directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/transformation) in this repository. Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are directly used in the second step to train and evaluaate GPS graph transformers.
 
 **<a name="part2">3. Training and evaluation of GPS graph transformers:</a>**
