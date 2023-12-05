@@ -44,8 +44,9 @@ By doing so, the **PGTNet repository** will be placed in the root directory of *
 
 Now, we are ready to download all event logs that are used in our experiments. Note that, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/transformation). In case you want to start with training PGTNet, you can skip this step as well as the next step, and refer to [training](https://github.com/keyvan-amiri/PGTNet#part4) step. However, we have provided our source code for the sake of transparency. This source code also facilitates the use of PGTNet for other predictive process monitoring tasks (e.g., next activity prediction, next timestamp prediction, suffix prediction, outcome prediction), and indeed for a broader range of event logs. Our source code for conversion can also be adjusted to accomodate different graph representation of event prefixes.
 
-To download all event logs run the following command:
+To download all event logs, navigate to the root directory of **PGTNet repository** and run `data-acquisition.py` script:
 ```
+cd PGTNet
 python data-acquisition.py
 ```
 All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). The **data-acquisition.py** script download all event logs, and convert them into .xes format. It also generates additional event logs (BPIC12C, BPIC12W, BPIC12CW, BPIC12A, BPIC12O) from BPIC12 event log. Links that are used for downloading event logs are saved in **4TU-links.yaml** file. You can easily add other links to include more event logs into your experiments, or adjust the links if in future they would be relocated. Our implementation currently supports event logs in xes xes.gz and csv formats. In case your dataset is in csv format you might need to explicitly define labels that are used for mandatory event attributes, namely activity identifier, timestamp identifier, and case identifier (similar to what is done for Helpdesk event log in data-acquisition.py). 
