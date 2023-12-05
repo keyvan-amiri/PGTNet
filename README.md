@@ -111,10 +111,8 @@ python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_mul
 ```
 As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated PGTNet using three different random seeds. These random seeds are 42,56,89. Each time you want to train PGTNet for specific event log and specific seed number, you should adjust the configuration file name, and the seed number in this command.
 
-_<a name="part4-4">4.4. Inference with PGTNet:</a>_
-
+**<a name="part5">5. Inference with PGTNet:</a>**
 The inference can be achieved similar to the training step. To do so, run commands like: 
-
 ```
 python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference.yaml run_multiple_splits [0,1,2,3,4] seed 42
 ```
