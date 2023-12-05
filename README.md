@@ -33,7 +33,7 @@ Note that we included pip install command required for working with event log da
 
 Once you setup a conda environement, clone the [GPS Graph Transformer repository](https://github.com/rampasek/GraphGPS) using the following command:
 ```
-git clone [repository_url](https://github.com/rampasek/GraphGPS)
+git clone https://github.com/rampasek/GraphGPS
 ```
 We will call the cloned repository as **GPS repository** in the remaining of this README file. 
 
