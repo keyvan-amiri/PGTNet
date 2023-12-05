@@ -1,0 +1,25 @@
+url_BPIC12: https://data.4tu.nl/ndownloader/items/533f66a4-8911-4ac7-8612-1235d65d1f37/versions/1  
+url_Sepsis: https://data.4tu.nl/ndownloader/items/33632f3c-5c48-40cf-8d8f-2db57f5a6ce7/versions/1  
+url_Traffic_Fines: https://data.4tu.nl/ndownloader/items/806acd1a-2bf2-4e39-be21-69b8cad10909/versions/1 
+url_Hospital: https://data.4tu.nl/ndownloader/items/6af6d5f0-f44c-49be-aac8-8eaa5fe4f6fd/versions/1  
+url_BPIC15_1: https://data.4tu.nl/ndownloader/items/6f35269e-4ce7-4bc4-9abb-b3cea04cad00/versions/1  
+url_BPIC15_2: https://data.4tu.nl/ndownloader/items/372d0cad-3fb1-4627-8ea9-51a09923d331/versions/1  
+url_BPIC15_3: https://data.4tu.nl/ndownloader/items/d6741425-5f62-4a59-92c5-08bae64b4611/versions/1  
+url_BPIC15_4: https://data.4tu.nl/ndownloader/items/34216d8a-f054-46d4-bf03-d9352f90967e/versions/1  
+url_BPIC15_5: https://data.4tu.nl/ndownloader/items/32b70553-0765-4808-b155-aa5319802c8a/versions/1  
+url_BPIC13C: https://data.4tu.nl/ndownloader/items/1987a2a6-9f5b-4b14-8d26-ab7056b17929/versions/1 
+url_BPIC13I: https://data.4tu.nl/ndownloader/items/0fc5c579-e544-4fab-9143-fab1f5192432/versions/1  
+url_BPIC20D: https://data.4tu.nl/ndownloader/items/6a0a26d2-82d0-4018-b1cd-89afb0e8627f/versions/1 
+url_BPIC20I: https://data.4tu.nl/ndownloader/items/91fd1fa8-4df4-4b1a-9a3f-0116c412378f/versions/1 
+url_Envpermit: https://data.4tu.nl/ndownloader/items/2db2e3c1-9499-4699-9098-1a28c15a5913/versions/2  
+url_Helpdesk: https://data.4tu.nl/ndownloader/items/94ee26c8-78f6-4387-b32b-f028f2103a2c/versions/1  #handle .csv file type
+
+
+file_name_mapping: 
+  BPI_Challenge_2013_closed_problems.xes.gz: BPI_Challenge_2013C.xes.gz
+  BPI_Challenge_2013_incidents.xes.gz: BPI_Challenge_2013I.xes.gz
+  Sepsis Cases - Event Log.xes.gz: Sepsis.xes.gz
+  Road_Traffic_Fine_Management_Process.xes.gz: Traffic_Fines.xes.gz
+  Hospital Billing - Event Log.xes.gz: Hospital.xes.gz
+  DomesticDeclarations.xes.gz: BPIC20_DomesticDeclarations.xes.gz
+  InternationalDeclarations.xes.gz: BPIC20_InternationalDeclarations.xes.gz

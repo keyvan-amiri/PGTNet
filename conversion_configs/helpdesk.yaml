@@ -1,0 +1,7 @@
+dataset_name: HelpDesk.xes
+event_attributes: ['org:resource', 'workgroup', 'seriousness_2', 'service_level' , 'service_type', 'customer'] # categorical event attributes
+event_num_att: []  # numerical event attributes
+case_attributes: ['responsible_section', 'support_section', 'product'] # categorical case attributes: enter name of attributes without 'case:'
+case_num_att: [] # numerical case attributes: enter name of attributes without 'case:'
+train_val_test_ratio: [0.64, 0.16, 0.2]
+target_normalization: True

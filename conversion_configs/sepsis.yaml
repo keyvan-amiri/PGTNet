@@ -1,0 +1,7 @@
+dataset_name: Sepsis.xes
+event_attributes: ['InfectionSuspected', 'org:group', 'DiagnosticBlood', 'DisfuncOrg', 'SIRSCritTachypnea', 'Hypotensie', 'SIRSCritHeartRate', 'Infusion', 'DiagnosticArtAstrup', 'DiagnosticIC', 'DiagnosticSputum', 'DiagnosticLiquor', 'DiagnosticOther', 'SIRSCriteria2OrMore', 'DiagnosticXthorax', 'SIRSCritTemperature', 'DiagnosticUrinaryCulture', 'SIRSCritLeucos', 'Oligurie', 'DiagnosticLacticAcid', 'Diagnose', 'Hypoxie', 'DiagnosticUrinarySediment', 'DiagnosticECG'] # categorical event attributes
+event_num_att: ['Age', 'Leucocytes', 'CRP', 'LacticAcid']  # numerical event attributes
+case_attributes: [] # categorical case attributes: enter name of attributes without 'case:'
+case_num_att: [] # numerical case attributes: enter name of attributes without 'case:'
+train_val_test_ratio: [0.64, 0.16, 0.2]
+target_normalization: True

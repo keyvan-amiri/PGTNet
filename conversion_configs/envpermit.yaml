@@ -1,0 +1,7 @@
+dataset_name: env_permit.xes
+event_attributes: ['org:group', 'org:resource'] # categorical event attributes
+event_num_att: []  # numerical event attributes
+case_attributes: ['responsible', 'department', 'channel', 'group'] # categorical case attributes: enter name of attributes without 'case:'
+case_num_att: [] # numerical case attributes: enter name of attributes without 'case:'
+train_val_test_ratio: [0.64, 0.16, 0.2]
+target_normalization: True
