@@ -3,7 +3,26 @@ This is the supplementary githob repository of the paper: "PGTNet: A Process Gra
 
 Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe (It is called the  **GPS repository** in the remaining of this README file). In order to start your experiments with PGTNet, the first thing to do is to clone both **GPS repository** and **PGTNet repository**.
 
-Based on the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda), you need to set up a Python environement with Conda.
+Based on the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda), you need to set up a Python environement with Conda:
+```
+conda create -n graphgps python=3.10
+conda activate graphgps
+
+conda install pytorch=1.13 torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install pyg=2.2 -c pyg -c conda-forge
+pip install pyg-lib -f https://data.pyg.org/whl/torch-1.13.0+cu117.html
+
+# RDKit is required for OGB-LSC PCQM4Mv2 and datasets derived from it.  
+conda install openbabel fsspec rdkit -c conda-forge
+
+pip install pytorch-lightning yacs torchmetrics
+pip install performer-pytorch
+pip install tensorboardX
+pip install ogb
+pip install wandb
+
+conda clean --all
+```
 
 Once you setup a conda environement and installed all libraries required for woring with GPS Graph Transformers, copy the **PGTNet repository** into the main directory that is used for **GPS repository**. 
 
