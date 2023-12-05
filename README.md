@@ -59,7 +59,30 @@ All datasets are publicly available at [the 4TU Research Data repository](https:
 
 **<a name="part3">3. Converting an event log into a graph dataset:</a>**
 
-Converting event logs into graph datasets. For more information, see: [conversion directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion). We already uploaded generated graph datasets in [conversion/transformation directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/transformation) in this repository. Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are directly used in the second step to train and evaluaate GPS graph transformers.
+This section of the implementation focuses on the conversion of an event log into a graph dataset. We already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are automatically downloaded and will be used to train and evaluaate PGTNet for remaining time prediction. In order to convert an event log into its corresponding graph dataset (more precisely a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html), you need to run the same python script with specific arguments:
+```
+python GTconvertor.py conversion_configs envpermit.yaml --overwrite true
+```
+The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., envpermit.yaml) is the name of configuration file that is used for conversion. We will discuss this argument with more details in the followings. The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
+
+**Conversion Configuration Files:**
+
+Each conversion configuration file defines global variables specific to the dataset. These variables are used for converting the event log into its corresponding graph dataset and include:
+1. `raw_dataset`: name of the raw dataset (i.e., event log).
+2. `event_attributes`, `event_num_att`, `case_attributes`, `case_num_att`: Categorical and numerical attribute names at both the event-level and case-level. The implementation provides the opportunity to experiment with different combinations for these variables. Therefore, it is easy to conduct ablation studies or investigate contribution of different attributes to the accuracy of predictions. 
+3. `train_val_test_ratio`: Training, validation, and test data ratio. By default, we use a 0.64-0.16-0.20 data split ratio. This means that we sort all traces based on the timestamps of their first events, and then use the first 64% for training set, the next 16% for validation set and the last 20% for test set. This is equivalent to holdout data split. Later, we will discuss how we can use cross-fold validation data split using training configuration files.
+4. A boolean attribute called `target_normalization`. When `target_normalization` is set to True (the default value), the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one. This normalization proved to be helpful because the target attribuite often has a highly skewed distribution.
+
+**The output for conversion step:**
+
+The resultant graph dataset will be saved in a seperate folder within **datasets** in the root directory for **GPS repository**. We will discuss the structure of the resultant graph dataset later. Note that, Running the `GTconvertor.py` script produces several additional output files, including:
+1. Encoders: One-hot encoders for both case-level and event-level attributes, implemented using scikit-learn.
+2. Activity Classes Dictionary: A dictionary that defines activity classes.
+3. Filtered Cases: A list of case IDs for cases that do not have at least three events.
+4. Histogram: A PNG file that visualizes the distribution of target attribute values.
+All additional ouputs are saved in a separate folder called **transformation** in the root directory of **PGTNet repository**. 
+
+**Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/PGTNet/tree/main/graph dataset statistics).
 
 **<a name="part4">4. Training and evaluation of GPS graph transformers:</a>**
 
