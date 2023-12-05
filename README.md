@@ -1,7 +1,7 @@
 # PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances
 This is the supplementary githob repository of the paper: "PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances".
 
-Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe (It is called the  **GPS repository** in the remaining of this README file). In order to start your experiments with PGTNet, the first thing to do is to clone both **GPS repository** and **PGTNet repository**.
+Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe (It is called the  **GPS repository** in the remaining of this README file). 
 
 **<a name="part1">1. Set up a Python environement to work with GPS Graph Transformers:</a>**
 
@@ -31,6 +31,7 @@ pip install scikit-learn
 conda clean --all
 ```
 Note that we included pip install commands required for working with event log data (e.g., [pm4py](https://pm4py.fit.fraunhofer.de/) library).
+In order to start your experiments with PGTNet, the first thing to do is to clone both **GPS repository** and **PGTNet repository**.
 
 Once you setup a conda environement and installed all libraries required for woring with GPS Graph Transformers, copy the **PGTNet repository** into the main directory that is used for **GPS repository**. The structure should be like this:
 ```
