@@ -59,7 +59,7 @@ All datasets are publicly available at [the 4TU Research Data repository](https:
 
 **<a name="part3">3. Converting an event log into a graph dataset:</a>**
 
-This section of the implementation focuses on the conversion of an event log into a graph dataset. We already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are automatically downloaded and will be used to train and evaluaate PGTNet for remaining time prediction. In order to convert an event log into its corresponding graph dataset (more precisely a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html), you need to run the same python script with specific arguments:
+This section of the implementation focuses on the conversion of an event log into a graph dataset. We already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are automatically downloaded and will be used to train and evaluaate PGTNet for remaining time prediction. In order to convert an event log into its corresponding graph dataset, you need to run the same python script with specific arguments:
 ```
 python GTconvertor.py conversion_configs envpermit.yaml --overwrite true
 ```
@@ -83,6 +83,12 @@ The resultant graph dataset will be saved in a seperate folder within **datasets
 All additional ouputs are saved in a separate folder called **transformation** in the root directory of **PGTNet repository**. 
 
 **Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/PGTNet/tree/main/graph_dataset_statistics).
+
+**Dataset Structure:**
+Each graph dataset which represent set of event prefixes (obtained from the event log) is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html). In this graph dataset each attributed directed graph corresponds to an event prefix: an unfinished business process instance.
+
+For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. Loading a graph dataset to train a GPS graph transformer is done using one single zip file including all these three parts. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called `split_mode` in the relevant training configuration file. 
+
 
 **<a name="part4">4. Training and evaluation of GPS graph transformers:</a>**
 
