@@ -1,0 +1,1 @@
+Collection of configurations that are used for training and evaluation of our model. These configurations are selected based on the limited hyperparameter optimization effort that is described with more details in our paper.
