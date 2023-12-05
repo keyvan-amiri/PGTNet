@@ -87,7 +87,7 @@ All additional ouputs are saved in a separate folder called **transformation** i
 For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. Loading a graph dataset to train a GPS graph transformer is done using one single zip file including all these three parts. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called `split_mode` in the relevant training configuration file. 
 
 
-**<a name="part4">4. Training and evaluation of PGTNet for remaining time prediction:</a>**
+**<a name="part4">4. Training a PGTNet for remaining time prediction:</a>**
 
 To train and evaluate PGTNet, we employ the implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). However, in order to use it for remaining time prediction of business process instances, you need to adjust some part of the original implementation. This can be achieved by running the following command:
 ```
@@ -103,20 +103,18 @@ c. The python script `GTeventlogHandler.py` includes multiple `InMemoryDataset` 
 
 d. The python scripts `linear_edge_encoder.py` and `two_layer_linear_edge_encoder.py` are specifically designed for edge embedding in the remaining cycle time prediction problem.
 
-Once abobementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to replicate our experiments are collected in this [directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/configs/GPS).
+The `file_transfer.py` script also copy all required configuration files for training and evaluation of PGTNet to the relevant folder in **GPS repository**.
 
-Please ensure that all relevant configuration files are copied to `/configs/GPS` directory in the `GPS repository` (i.e. the original implementation of GPS graph transformer). As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated GPS graph transformer networks using three different random seeds: 42,56,89.
+Once abovementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to train PGTNet based on the event logs used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs). For training PGTNet, you need to run the following:
+```
+python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_multiple_splits [0,1,2,3,4] seed 42
+```
+As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated PGTNet using three different random seeds. These random seeds are 42,56,89. Each time you want to train PGTNet for specific event log and specific seed number, you should adjust the configuration file name, and the seed number in this command.
 
-For training use commands like: 
+_<a name="part4-4">4.4. Inference with PGTNet:</a>_
 
-`python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_multiple_splits [0,1,2,3,4] seed 42`
+The inference can be achieved similar to the training step. To do so, run commands like: 
 
-(Note: replace the configuration file name, and seed number)
-
-_<a name="part4-4">4.4. Inference with GPS graph transformer networks:</a>_
-
-The inference can be similarly achieved. To do so, use commands like: 
-
-`python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference.yaml run_multiple_splits [0,1,2,3,4] seed 42`
-
-(Note: replace the configuration file name, and seed number)
+```
+python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference.yaml run_multiple_splits [0,1,2,3,4] seed 42
+```
