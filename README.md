@@ -53,7 +53,7 @@ Now, we are ready to download all event logs that are used in our experiments:
 ```
 python data-acquisition.py
 ```
-All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). The **data-acquisition** script download all event logs, and convert them into .xes format. It also generates additional event logs (BPIC12C, BPIC12W, BPIC12CW, BPIC12A, BPIC12O) from BPIC12 event log.
+All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). The **data-acquisition** script download all event logs, and convert them into .xes format. It also generates additional event logs (BPIC12C, BPIC12W, BPIC12CW, BPIC12A, BPIC12O) from BPIC12 event log. Links that are used for downloading event logs are saved in **4TU-links.yaml** file. You can easily add other links to include more event logs into your experiments, or adjust the links if in future they would be relocated. Our implementation currently supports event logs in .xes .xes.gz and .csv formats. In case your dataset is in csv format you might need to explicitly define labels that are used for mandatory event attributes, namely activity identifier, timestamp identifier, and case identifier. 
 
 **<a name="part3">3. Converting an event log into a graph dataset:</a>**
 
