@@ -49,6 +49,11 @@ GraphGPS
 ├──
 └── README.md
 ```
+Now, we are ready to download all event logs that are used in our experiments:
+```
+python data-acquisition.py
+```
+All datasets are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). **data-acquisition** script download ALL event logs, and convert all of them into .xes format. It also generates additional event logs (BPIC12C, BPIC12W, BPIC12CW, BPIC12A, BPIC12O) from BPIC12 event log.
 
 **<a name="part3">3. Converting an event log into a graph dataset:</a>**
 
