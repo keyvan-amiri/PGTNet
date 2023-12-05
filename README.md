@@ -35,10 +35,10 @@ Once you setup a conda environement, clone the [GPS Graph Transformer repository
 ```
 git clone https://github.com/rampasek/GraphGPS
 ```
-We will call the cloned repository as **GPS repository** in the remaining of this README file. 
-
-
-
+We will call the cloned repository as **GPS repository** in the remaining of this README file. Now, Navigate to the root directory for **GPS repository**:
+```
+cd GraphGPS
+```
  as well as the current repository (i.e., the **PGTNet repository**). The **PGTNet repository** should be placed in one folder with the directory that is used as the root directory of **GPS repository**. The structure should be like this:
 ```
 GraphGPS
