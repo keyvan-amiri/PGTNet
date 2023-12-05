@@ -10,7 +10,7 @@ from torch_geometric.data import (InMemoryDataset, Data, download_url,
 
 class EVENTBPIC15M1(InMemoryDataset):
    
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpic15m1_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpic15m1_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -91,7 +91,7 @@ class EVENTBPIC15M1(InMemoryDataset):
             
 class EVENTBPIC15M2(InMemoryDataset):
    
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpic15m2_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpic15m2_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -172,7 +172,7 @@ class EVENTBPIC15M2(InMemoryDataset):
             
 class EVENTBPIC15M3(InMemoryDataset):
    
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpic15m3_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpic15m3_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -253,7 +253,7 @@ class EVENTBPIC15M3(InMemoryDataset):
             
 class EVENTBPIC15M4(InMemoryDataset):
    
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpic15m4_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpic15m4_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -334,7 +334,7 @@ class EVENTBPIC15M4(InMemoryDataset):
             
 class EVENTBPIC15M5(InMemoryDataset):
    
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpic15m5_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpic15m5_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -415,7 +415,7 @@ class EVENTBPIC15M5(InMemoryDataset):
 
 class EVENTBPIC12(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi12_graph_raw.zip'  
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi12_graph_raw.zip'  
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -496,7 +496,7 @@ class EVENTBPIC12(InMemoryDataset):
             
 class EVENTBPIC12A(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi12a_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi12a_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -577,7 +577,7 @@ class EVENTBPIC12A(InMemoryDataset):
             
 class EVENTBPIC12C(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi12c_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi12c_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -658,7 +658,7 @@ class EVENTBPIC12C(InMemoryDataset):
             
 class EVENTBPIC12CW(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi12cw_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi12cw_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -739,7 +739,7 @@ class EVENTBPIC12CW(InMemoryDataset):
             
 class EVENTBPIC12O(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi12o_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi12o_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -819,7 +819,7 @@ class EVENTBPIC12O(InMemoryDataset):
 
 class EVENTBPIC12W(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi12w_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi12w_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -899,7 +899,7 @@ class EVENTBPIC12W(InMemoryDataset):
 
 class EVENTBPIC13C(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpic13c_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpic13c_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -978,7 +978,7 @@ class EVENTBPIC13C(InMemoryDataset):
             
 class EVENTBPIC13I(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpic13i_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpic13i_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -1058,7 +1058,7 @@ class EVENTBPIC13I(InMemoryDataset):
             
 class EVENTBPIC20D(InMemoryDataset):
    
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi20d_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi20d_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -1137,7 +1137,7 @@ class EVENTBPIC20D(InMemoryDataset):
             
 class EVENTBPIC20I(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/bpi20i_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/bpi20i_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -1217,7 +1217,7 @@ class EVENTBPIC20I(InMemoryDataset):
             
 class EVENTEnvPermit(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/envpermit_graph_raw.zip'   
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/envpermit_graph_raw.zip'   
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -1297,7 +1297,7 @@ class EVENTEnvPermit(InMemoryDataset):
             
 class EVENTHelpDesk(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/helpdesk_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/helpdesk_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -1376,7 +1376,7 @@ class EVENTHelpDesk(InMemoryDataset):
             
 class EVENTHospital(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/hospital_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/hospital_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -1455,7 +1455,7 @@ class EVENTHospital(InMemoryDataset):
             
 class EVENTSepsis(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/sepsis_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/sepsis_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
@@ -1535,7 +1535,7 @@ class EVENTSepsis(InMemoryDataset):
             
 class EVENTTrafficfines(InMemoryDataset):
     
-    url = 'https://github.com/keyvan-amiri/GT-Remaining-CycleTime/raw/main/conversion/transformation/trafficfines_graph_raw.zip'    
+    url = 'https://github.com/keyvan-amiri/PGTNet/raw/main/transformation/trafficfines_graph_raw.zip'    
 
     def __init__(self, root, split='train', transform=None, pre_transform=None,
                  pre_filter=None):
