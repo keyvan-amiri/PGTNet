@@ -3,7 +3,7 @@ This is the supplementary githob repository of the paper: "PGTNet: A Process Gra
 
 Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe (It is called the  **GPS repository** in the remaining of this README file). In order to start your experiments with PGTNet, the first thing to do is to clone both **GPS repository** and **PGTNet repository**.
 
-**1. Set up a Python environement to work with GPS Graph Transformers:**
+**<a name="part0">1. Set up a Python environement to work with GPS Graph Transformers:</a>**
 
 Based on the [instructions](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda), you need to set up a Python environement with Conda:
 ```
@@ -47,16 +47,16 @@ GraphGPS
 ├──
 └── README.md
 ```
-**<a name="part1">1. Data preparation:</a>**
+**<a name="part1">2. Data preparation:</a>**
 Converting event logs into graph datasets. For more information, see: [conversion directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion). We already uploaded generated graph datasets in [conversion/transformation directory](https://github.com/keyvan-amiri/GT-Remaining-CycleTime/tree/main/conversion/transformation) in this repository. Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are directly used in the second step to train and evaluaate GPS graph transformers.
 
-**<a name="part2">2. Training and evaluation of GPS graph transformers:</a>**
+**<a name="part2">3. Training and evaluation of GPS graph transformers:</a>**
 
-_<a name="part2-1">2.1. Original implementation of the GPS graph transformers, and setting up a python environment:</a>_
+_<a name="part2-1">3.1. Original implementation of the GPS graph transformers, and setting up a python environment:</a>_
 
 
 
-_<a name="part2-2">2.2. Adjustments to the original implementation:</a>_
+_<a name="part2-2">3.2. Adjustments to the original implementation:</a>_
 
 Once requirements of [2.1.](https://github.com/keyvan-amiri/GT-Remaining-CycleTime#part2-1) are met, the cloned version of the original implementation should be adjusted as per follows:
 
