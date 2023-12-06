@@ -155,3 +155,5 @@ We are interested in models that not only have smaller MAE but also can make acc
 As it is discussed in our paper, we conducted an ablation study for which we trained a minimal PGTNet model, relying solely on edge weights (i.e., control-flow) and temporal features, thus omitting data attributes from consideration. To replicate our ablation study, you need to adjust the conversion script and use different configuration files which you can find [here](https://github.com/keyvan-amiri/PGTNet/tree/main/ablation_study). For the quantitative analysis of the contribution of PGTNet's architecture and the contribution of incorporating additional features to the remarkabel performance of PGTNet see this [plot](https://github.com/keyvan-amiri/PGTNet/blob/main/ablation_study/ablation_plot.pdf). 
 
 **PGTNet's results for holdout data split:**
+
+While we chose a 5-fold cross-validation strategy (CV=5) in our experiments, we also report results obtained using holdout data splits for the sake of completeness. Note that, we used different training and configuration files for holdout data split which can be found here.
