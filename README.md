@@ -87,7 +87,7 @@ To train and evaluate PGTNet, we employ the implementation of [GraphGPS: General
 ```
 python file_transfer.py
 ```
-This script copies 5 important python scripts including are required adjustments:
+This script copies 5 important python scripts which take care of all necessary adjustments to the original implementation of GPS Graph Transformer recipe:
 
 a. In `main.py` , the most important change is that a train mode called 'event-inference' is added to customize the inference step.
 
