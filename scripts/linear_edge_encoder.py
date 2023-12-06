@@ -45,6 +45,10 @@ class LinearEdgeEncoder(torch.nn.Module):
             self.in_dim = 141 
         elif cfg.dataset.name == 'BPIC15M5cycletimeprediction':
             self.in_dim = 208 
+        # extra condition for ablation study:
+        elif 'ablation' in cfg.dataset.name:
+            self.in_dim = 6 
+            
         # and now back to the original implementation.
         else:
             raise ValueError("Input edge feature dim is required to be hardset "
