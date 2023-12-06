@@ -131,8 +131,8 @@ else:
             # Find the closest match based on "real_cycle_time" within the filtered subset
             closest_match = filtered_prediction.iloc[np.argmin(np.abs(filtered_prediction['real_cycle_time'] - real_cycle_time_init))] 
             # Add the matched row to the final result DataFrame with "predicted_cycle_time"
-            match_data = initial_row.append(pd.Series([closest_match['predicted_cycle_time']], index=['predicted_cycle_time']))
-            final_result_dataframe = final_result_dataframe.append(match_data, ignore_index=True)
+            match_data = initial_row._append(pd.Series([closest_match['predicted_cycle_time']], index=['predicted_cycle_time']))
+            final_result_dataframe = final_result_dataframe._append(match_data, ignore_index=True)
     print('To ensure proper match, length of the final dataframe is', len(final_result_dataframe))
     
     final_result_dataframe['MAE-days'] = (final_result_dataframe['real_cycle_time'] - final_result_dataframe['predicted_cycle_time']).abs() * normalization_factor
