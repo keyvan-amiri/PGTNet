@@ -78,7 +78,7 @@ All additional ouputs are saved in a separate folder called **transformation** i
 
 **Dataset Structure:** Each graph dataset which represent set of event prefixes (obtained from the event log) is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html). In this graph dataset each attributed directed graph corresponds to an event prefix: an unfinished business process instance.
 
-For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. Loading a graph dataset to train a GPS graph transformer is done using one single zip file including all these three parts. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called `split_mode` in the relevant training configuration file. 
+For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called `split_mode` in the relevant training configuration file. 
 
 
 **<a name="part4">4. Training a PGTNet for remaining time prediction:</a>**
