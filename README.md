@@ -145,4 +145,5 @@ python ResultHandler.py --dataset_name 2015m1 --seed_number 42 --inference_confi
 The aggregated dataframe will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**, and can be used for further analysis with respect to accuracy and earliness of predictions.
 
 **<a name="part6">6. Miscellaneous:</a>**
-**Erliness of predictions:**
+
+**Earliness of PGTNet's predictions:**
