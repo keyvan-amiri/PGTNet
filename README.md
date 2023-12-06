@@ -148,4 +148,8 @@ The aggregated dataframe will be saved in a folder called **PGTNet results** in 
 
 **Earliness of PGTNet's predictions:**
 
-We are interested in models that not only have smaller MAE but also can make accurate predictions earlier, allowing more time for corrective actions. We used the method proposed in [Predictive Business Process Monitoring with LSTM Neural Networks](https://link.springer.com/chapter/10.1007/978-3-319-59536-8_30), which evaluates MAE across different event prefix lengths. In our paper, we have provided the predcition earliness analysis (i.e., MAE trends at different prefix lengths) only for BPIC15-4, Sepsis, Helpdesk, and BPIC12A event logs. Similar analysis for other event logs used in our experiments can be found here.
+We are interested in models that not only have smaller MAE but also can make accurate predictions earlier, allowing more time for corrective actions. We used the method proposed in [Predictive Business Process Monitoring with LSTM Neural Networks](https://link.springer.com/chapter/10.1007/978-3-319-59536-8_30), which evaluates MAE across different event prefix lengths. In our paper, we have provided the predcition earliness analysis (i.e., MAE trends at different prefix lengths) only for BPIC15-4, Sepsis, Helpdesk, and BPIC12A event logs. Similar analysis for other event logs used in our experiments can be found [here](https://github.com/keyvan-amiri/PGTNet/tree/main/earliness_analysis).
+
+**Ablation study:**
+
+
