@@ -1,5 +1,4 @@
 import yaml
-import sys
 import os
 import os.path as osp
 import numpy as np
@@ -13,6 +12,7 @@ from torch_geometric.data import Data
 import pickle
 import matplotlib.pyplot as plt
 import argparse
+from PGTNetutils import eventlog_class_provider
 
 
 # Read user inputs from .yml file
@@ -327,54 +327,6 @@ def graph_conversion_func (split_log, removed_cases, idx, data_list, case_attrib
                 data_list.append(graph)
                 idx += 1
     return removed_cases, idx, data_list
-
-# Provide the class name for graph dataset (see: PGTNetlogHandler.py)
-def eventlog_class_provider(name_of_dataset):
-    if name_of_dataset == "BPIC15_1":
-        pyg_class_name = "EVENTBPIC15M1"
-    elif name_of_dataset == "BPIC15_2":
-        pyg_class_name = "EVENTBPIC15M2"
-    elif name_of_dataset == "BPIC15_3":
-        pyg_class_name = "EVENTBPIC15M3"
-    elif name_of_dataset == "BPIC15_4":
-        pyg_class_name = "EVENTBPIC15M4"
-    elif name_of_dataset == "BPIC15_5":
-        pyg_class_name = "EVENTBPIC15M5"
-    elif name_of_dataset == "BPI_Challenge_2012":
-        pyg_class_name = "EVENTBPIC12"
-    elif name_of_dataset == "BPI_Challenge_2012A":
-        pyg_class_name = "EVENTBPIC12A"
-    elif name_of_dataset == "BPI_Challenge_2012O":
-        pyg_class_name = "EVENTBPIC12O"
-    elif name_of_dataset == "BPI_Challenge_2012W":
-        pyg_class_name = "EVENTBPIC12W"
-    elif name_of_dataset == "BPI_Challenge_2012C":
-        pyg_class_name = "EVENTBPIC12C"
-    elif name_of_dataset == "BPI_Challenge_2012CW":
-        pyg_class_name = "EVENTBPIC12CW"
-    elif name_of_dataset == "BPI_Challenge_2013C":
-        pyg_class_name = "EVENTBPIC13C"
-    elif name_of_dataset == "BPI_Challenge_2013I":
-        pyg_class_name = "EVENTBPIC13I"
-    elif name_of_dataset == "BPIC20_DomesticDeclarations":
-        pyg_class_name = "EVENTBPIC20D"
-    elif name_of_dataset == "BPIC20_InternationalDeclarations":
-        pyg_class_name = "EVENTBPIC20I"
-    elif name_of_dataset == "env_permit":
-        pyg_class_name = "EVENTEnvPermit"
-    elif name_of_dataset == "HelpDesk":
-        pyg_class_name = "EVENTHelpDesk"
-    elif name_of_dataset == "Hospital":
-        pyg_class_name = "EVENTHospital"
-    elif name_of_dataset == "Sepsis":
-        pyg_class_name = "EVENTSepsis"
-    elif name_of_dataset == "Traffic_Fines":
-        pyg_class_name = "EVENTTrafficfines" 
-    else:
-        pyg_class_name = None
-        print('Error! no Pytorch Geometric dataset class is defined for this event log') 
-    return pyg_class_name
-
 
 def main(directory, yml_file, overwrite):
     try:
