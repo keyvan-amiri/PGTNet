@@ -119,6 +119,7 @@ The configuration file includes all required training hyperparameters. We briefl
 | node_encoder_name | Specifies the encoding that will be employed for nodes. For instance, in **TypeDictNode+LapPE+RWSE**, "TypeDictNode" refers to embedding layer, and "LapPE+RWSE" refers to the type of PE/SEs that are used. There is another parameter called **node_encoder_num_types** which should be set the number of activity classes in the event log. For instance, node_encoder_num_types: 396 for the BPIC15-1 event log.| 
 | edge_encoder_name | Specifies the encoding that will be employed for edges. For instance, "TwoLayerLinearEdge" refers to two linear layers.| 
 | PE/SE parameters | Depending of type of PE/SEs that are used, all relevant hyperparameter can be defined. For instance if "LapPE+RWSE" is used all hyperparameters can be defined using "posenc_LapPE" and "posenc_RWSE". These hyperparameters include a wide range of options for instance the size of PE can be defined using "dim_pe", and the model that is used for processing it can be defined using "model" (for instance, model: DeepSet).|
+| train | Specify the most important training hyperparameters including the training mode (i.e., **train.mode**) and batch size (i.e., **train.batch_size**). We always use the **custom** mode for training. |
 | model | Specifies the most important global design options. For instance, **model.type** defines type of the model and in our case is always a **GPSModel**. The **model.loss_fun** defines the loss fucntion which in our case is always **l1**. The **model.graph_pooling** specifies type of graph pooling and for instance can be set to "mean".|
 | gt | Specifies the most important design options with respect to Graph Transformer that will be employed. For instance, **gt.layer_type** defines type of MPNN and Transformer blocks within each GPS layer, and in our case is always set to **GINE+Transformer**. The **gt.layers** and **gt.n_heads** define the number of GPS layers and number of heads in each layer. The **gt.dim_hidden** defines the hidden dimentsion that is used for both node and edge features. Note that, this size also include PE/SEs that are incorporated into node and edge features. The **gt.dropout** and **gt.attn_dropout** define the dropout value for MPNN and Transformer blocks, respectively.|
 | optim | Specifies the most important design options with respect to the optimizer. For instance, **optim.optimizer** specifies the optimizer and in our case is always set to **adamW**. The **optim.base_lr** and **optim.weight_decay** define base learning rate and weight decay, respectively. The **optim.max_epoch** specifies number of training epochs, while **optim.scheduler** and **optim.num_warmup_epochs** specify type of schedule (in our case always **cosine_with_warmup**) and number of warmup epochs. |
@@ -128,8 +129,11 @@ Training results are saved in a seperate folder which is located in the **result
 
 **<a name="part5">5. Inference with PGTNet:</a>**
 
-The inference (i.e., get prediction of PGTNet for all examples in the test set) can be achieved similar to the training step. To do so, run commands like: 
+The inference (i.e., get prediction of PGTNet for all examples in the test set) can be done similar to the training step. To do so, run commands like: 
 ```
 python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference.yaml run_multiple_splits [0,1,2,3,4] seed 42
 ```
 All configuration files required to inference with a PGTNet based on the event logs used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/evaluation_configs).
+
+In principle, the inference configuration files are similar to the training configuration files. The most important difference is that, the **train.mode** is set to **"event-inference"** instead of "custom". The inference configuration file additionally include another parameter called **pretrained.dir** by which we specify the folder that contais training results. For instance it can be something like this: `/home/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest`. 
+
