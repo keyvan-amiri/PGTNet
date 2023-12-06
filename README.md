@@ -111,13 +111,14 @@ The configuration file includes all required training hyperparameters. We briefl
 | Parameter name | Parameter description |
 |----------|----------|
 | out_dir  | name of the directory in which the results will be saved (e.g., results)| 
-| metric_best | the metric that is used as loss function. In our case, it is always **mae** Mean Absolute Error. There is another parameter called "metric_agg" which determines whether the metric should be maximized or minimized (in our case it is always set to "argmin".)| 
+| metric_best | the metric that is used for results. In our case, it is always **mae** Mean Absolute Error. There is another parameter called "metric_agg" which determines whether the metric should be maximized or minimized (in our case it is always set to "argmin".)| 
 | dataset.format | Name of the PyG data object class that is used (e.g., PyG-EVENTBPIC15M1)| 
 | dataset.task | specifies the task level. In our case, it is always set to **graph** since we always have a graph-level prediction task at hand.| 
 | dataset.task_type | specifies the task type. In our case, it is always set to **regression**.| 
 | dataset.split_mode | while **cv-kfold-5** specifies cross-fold validation data split, **standard** can be used for holdout data split.| 
-| dataset.format | Name of the PyG data object class that is used (e.g., PyG-EVENTBPIC15M1) | 
-| dataset.format | Name of the PyG data object class that is used (e.g., PyG-EVENTBPIC15M1) | 
+| node_encoder_name | specifies the encoding that will be employed for nodes. For instance in **TypeDictNode+LapPE+RWSE**, "TypeDictNode" refers to embedding layer, and "LapPE+RWSE" refers to the type of PE/SEs that are used. There is another parameter called **node_encoder_num_types** which should be set the number of activity classes in the event log. For instance node_encoder_num_types: 396 for the BPIC15-1 event log. | 
+| edge_encoder_name | specifies the encoding that will be employed for edges. For instance, "TwoLayerLinearEdge" refers to two linear layers. | 
+| PE/SE parameters | Depending of type of PE/SEs that are used, all relevant hyperparameter can be defined. For instance if "LapPE+RWSE" is used all hyperparameters can be defined using "posenc_LapPE" and "posenc_RWSE". These hyperparameters include a wide range of options for instance the size of PE can be defined using "dim_pe", and the model that is used for processing it can be defined using "model" (for instance, model: DeepSet) |
 <!-- This is not remaining of the table. -->
 
 Training results are saved in a seperate folder which is located in the **results** folder in the root directory of **GPS repository**. Name of this folder is always equivalent to the name of the configuration file that is used for training. For instance running the previous command produces the folder `bpic2015m1-GPS+LapPE+RWSE-ckptbest`. 
