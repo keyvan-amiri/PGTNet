@@ -1,0 +1,7 @@
+dataset_name: BPIC15_3.xes
+event_attributes: [] # empty categorical event attributes for ablation study.
+event_num_att: []  # empty numerical event attributes for ablation study.
+case_attributes: [] # emptyv categorical case attributes for ablation study .
+case_num_att: [] # empty numerical case attributes for ablation study.
+train_val_test_ratio: [0.64, 0.16, 0.2]
+target_normalization: True
