@@ -142,4 +142,4 @@ Running the inference script results in one dataframe (.csv) for each fold. Each
 cd PGTNet
 python ResultHandler.py --dataset_name 2015m1 --seed_number 42 --inference_config 'bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference'
 ```
-The final aggregated result will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**.
+The aggregated dataframe will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**, and can be used for further analysis with respect to accuracy and earliness of predictions.
