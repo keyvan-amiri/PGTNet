@@ -11,12 +11,10 @@ From inference results to performance evaluation:
 """
 import os
 import pandas as pd
-import os.path as osp
-import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 from torch_geometric.data import Dataset, DataLoader
-import ast
+import argparse
 from PGTNetutils import eventlog_class_provider, mean_cycle_norm_factor_provider
 
 # To load and work with the graph dataset (a Pytorch Geometric data object)
@@ -30,10 +28,15 @@ class CustomDataset(Dataset):
 
     def get(self, idx):
         return self.data_list[idx]
-    
-dataset_name = 'Envpermit'
-seed_number = '42'
-inference_config = 'envpermit-GPS+SNMLP+RWSE-ckptbest-eventinference'
+
+parser = argparse.ArgumentParser(description='Handle PGTNet results')
+parser.add_argument('--dataset_name', type=str, help='Name of the dataset')
+parser.add_argument('--seed_number', type=str, help='Seed number')
+parser.add_argument('--inference_config', type=str, help='Inference configuration')
+args = parser.parse_args()
+dataset_name = args.dataset_name
+seed_number = args.seed_number
+inference_config = args.inference_config
 num_runs = 5
 
 script_dir = os.path.dirname(os.path.abspath(__file__)) #Root directory for PGTNet
