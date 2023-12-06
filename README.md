@@ -152,4 +152,7 @@ We are interested in models that not only have smaller MAE but also can make acc
 
 **Ablation study:**
 
+As it is discussed in our paper, we conducted an ablation study for which we trained a minimal PGTNet model, relying solely on edge weights (i.e., control-flow) and temporal features, thus omitting data attributes from consideration. To replicate our ablation study, you need to adjust the conversion script and use different configuration files which you can find here.
+
+
 
