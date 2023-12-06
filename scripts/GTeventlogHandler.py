@@ -1611,3 +1611,1276 @@ class EVENTTrafficfines(InMemoryDataset):
             pbar.close()
             torch.save(self.collate(data_list),
                        osp.join(self.processed_dir, f'{split}.pt'))
+
+# extra classes for ablation study
+class EVENTBPIC13CABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/na5b8fvt4lwoy2euyaqna/bpic2013cablation_graph_raw.zip?rlkey=heoz0q77lw9qqwmnml3msvamz&dl=1'    
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC13CABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpic2013cablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                edge_weight = graph.edge_weight
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, 
+                            edge_weight = edge_weight)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+
+            
+class EVENTBPIC15M1ABLATION(InMemoryDataset):
+   
+    url = 'https://www.dropbox.com/scl/fi/yj2dekmdm1mdiyb0oxysz/bpic15m1ablation_graph_raw.zip?rlkey=3r3y7yf7w1ucpo5nkuhqcfrcn&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC15M1ABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpic15m1ablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]           
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))  
+            
+            
+class EVENTBPIC15M2ABLATION(InMemoryDataset):
+   
+    url = 'https://www.dropbox.com/scl/fi/wokzgkuu220vat7vquods/bpic15m2ablation_graph_raw.zip?rlkey=8gnokg68bjzqcpt6ljy89uvpf&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC15M2ABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpic15m2ablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]             
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTBPIC15M3ABLATION(InMemoryDataset):
+   
+    url = 'https://www.dropbox.com/scl/fi/lze920t9p97f9bzgcdsmw/bpic15m3ablation_graph_raw.zip?rlkey=9j05n5g90oxc1ziea3o4vw2f0&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC15M3ABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpic15m3ablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]            
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTBPIC15M4ABLATION(InMemoryDataset):
+   
+    url = 'https://www.dropbox.com/scl/fi/n8jx1a9td3c1g0grz0k6o/bpic15m4ablation_graph_raw.zip?rlkey=zg1x4dhzd6ir44lpgq73fim7c&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC15M4ABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpic15m4ablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]             
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTBPIC15M5ABLATION(InMemoryDataset):
+   
+    url = 'https://www.dropbox.com/scl/fi/o5ril3re4u8k8hj5d6hjw/bpic15m5ablation_graph_raw.zip?rlkey=l17kp36dxeo4c3tg792inxhvv&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC15M5ABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpic15m5ablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx] 
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+
+class EVENTBPIC12ABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/5uhs6359bqxl6l3u7o8ye/bpi12ablation_graph_raw.zip?rlkey=hsne9yz5yichuezbpyrct388n&dl=1'  
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC12ABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi12ablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx] 
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+class EVENTBPIC12AABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/heq1why1w7x8503ev9pda/bpi12aablation_graph_raw.zip?rlkey=ns87s5gtr26ca70h1y3aqi0ou&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC12AABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi12aablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]          
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+
+            
+class EVENTBPIC12CABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/89uikm1dqw9epr9lg144j/bpi12cablation_graph_raw.zip?rlkey=b2rgal3wsqcs3crskeeng6xqq&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC12CABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi12cablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx] 
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTBPIC12CWABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/w8xkr6cpqy386qjcr09x2/bpi12cwablation_graph_raw.zip?rlkey=cerx8yrb9y33g2gkt0lihjz4r&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC12CWABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi12cwablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx] 
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTBPIC12OABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/zaen2l3o3oavkqqbshkfv/bpi12oablation_graph_raw.zip?rlkey=68ynlueg5d7lcl4sgoak0sarn&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC12OABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi12oablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]             
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+
+class EVENTBPIC12WABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/rj1jf2k76fl6e7xg2xuty/bpi12wablation_graph_raw.zip?rlkey=s4btp7mfky62nmmo9p9ho35gu&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC12WABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi12wablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]                  
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+class EVENTBPIC13IABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/yyf54kr9g58cdspx5kfsz/bpic13iablation_graph_raw.zip?rlkey=n5istaipu722fqw8pn1sh5v55&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC13IABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpic13iablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]               
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                edge_weight = graph.edge_weight
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, 
+                            edge_weight = edge_weight)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTBPIC20DABLATION(InMemoryDataset):
+   
+    url = 'https://www.dropbox.com/scl/fi/a5e8deqixe200ns1y096q/bpi20dablation_graph_raw.zip?rlkey=814p7t70xgv3nk91e4jgeoqrt&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC20DABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi20dablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]                
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                edge_weight = graph.edge_weight
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, 
+                            edge_weight = edge_weight)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+class EVENTBPIC20IABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/gcld1siqlsjwwonudwxhx/bpi20iablation_graph_raw.zip?rlkey=q97apbpwzu5ixsjf6w37jscd6&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTBPIC20IABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'bpi20iablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]               
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                edge_weight = graph.edge_weight
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, 
+                            edge_weight = edge_weight)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTEnvPermitABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/thrlxzhak56o5985ujr99/envpermitablation_graph_raw.zip?rlkey=3j6o95kfhjs1xpdjk0mdj5qx2&dl=1'   
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTEnvPermitABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'envpermitablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]                
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+class EVENTHelpDeskABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/o4rpr7fypm1tbrv0xw9gx/helpdeskablation_graph_raw.zip?rlkey=3ci0yx9o8v258ib52ks2e56wj&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTHelpDeskABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'helpdeskablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]    
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                cid = graph.cid
+                pl = graph.pl
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, cid = cid, pl = pl)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+class EVENTHospitalABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/1vwromqt0xkesxxldby9r/hospitalablation_graph_raw.zip?rlkey=grre5lyxhe4wx9nkmy21feh9i&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTHospitalABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'hospitalablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]               
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                edge_weight = graph.edge_weight
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, 
+                            edge_weight = edge_weight)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+class EVENTSepsisABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/muanfmbllyb5gnczzvfsg/sepsisablation_graph_raw.zip?rlkey=hulgh5gysfd7d6gjr33c3q0a7&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTSepsisABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'sepsisablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]               
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                edge_weight = graph.edge_weight
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, 
+                            edge_weight = edge_weight)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))
+            
+            
+class EVENTTrafficfinesABLATION(InMemoryDataset):
+    
+    url = 'https://www.dropbox.com/scl/fi/nduy4ya31zbp9eu0qdni0/trafficfinesablation_graph_raw.zip?rlkey=87s8ftmeag7vedxpsqa25zsmi&dl=1'    
+
+    def __init__(self, root, split='train', transform=None, pre_transform=None,
+                 pre_filter=None):
+        self.name = "EVENTTrafficfinesABLATION"
+        assert split in ['train', 'val', 'test']
+        super().__init__(root, transform, pre_transform, pre_filter)
+        path = osp.join(self.processed_dir, f'{split}.pt')
+        self.data, self.slices = torch.load(path)
+        
+    
+    @property
+    def raw_file_names(self):
+        return ['train.pickle', 'val.pickle', 'test.pickle']
+    
+    @property
+    def processed_file_names(self):
+        return ['train.pt', 'val.pt', 'test.pt']
+
+    def download(self):
+        shutil.rmtree(self.raw_dir)
+        path = download_url(self.url, self.root)
+        extract_zip(path, self.root)
+        os.rename(osp.join(self.root, 'trafficfinesablation_graph_raw'), self.raw_dir)
+        os.unlink(path)
+    
+    def process(self):
+        for split in ['train', 'val', 'test']:
+            with open(osp.join(self.raw_dir, f'{split}.pickle'), 'rb') as f:
+                graphs = pickle.load(f)
+
+            indices = range(len(graphs))
+
+            pbar = tqdm(total=len(indices))
+            pbar.set_description(f'Processing {split} dataset')
+
+            data_list = []
+            for idx in indices:
+                graph = graphs[idx]                  
+                x = graph.x
+                edge_attr = graph.edge_attr
+                edge_index = graph.edge_index
+                y = graph.y
+                edge_weight = graph.edge_weight
+                
+                data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr, y=y, 
+                            edge_weight = edge_weight)
+                
+                if self.pre_filter is not None and not self.pre_filter(data):
+                    continue
+
+                if self.pre_transform is not None:
+                    data = self.pre_transform(data)
+
+                data_list.append(data)
+                pbar.update(1)
+
+            pbar.close()
+            torch.save(self.collate(data_list),
+                       osp.join(self.processed_dir, f'{split}.pt'))

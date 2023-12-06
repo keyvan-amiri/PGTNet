@@ -21,7 +21,15 @@ from graphgps.loader.dataset.GTeventlogHandler import (
     EVENTBPIC13I, EVENTBPIC13C, EVENTBPIC20D, EVENTBPIC20I, EVENTHelpDesk, EVENTSepsis,
     EVENTEnvPermit, EVENTHospital, EVENTTrafficfines, EVENTBPIC15M1, EVENTBPIC15M2,
     EVENTBPIC15M3, EVENTBPIC15M4, EVENTBPIC15M5)
+# import extra classes for ablation study:
+from graphgps.loader.dataset.GTeventlogHandler import (
+    EVENTBPIC13CABLATION, EVENTBPIC15M1ABLATION, EVENTBPIC15M2ABLATION,EVENTBPIC15M3ABLATION,
+    EVENTBPIC15M4ABLATION, EVENTBPIC15M5ABLATION, EVENTBPIC12ABLATION, EVENTBPIC12AABLATION, 
+    EVENTBPIC12CABLATION, EVENTBPIC12CWABLATION, EVENTBPIC12OABLATION, EVENTBPIC12WABLATION,
+    EVENTBPIC13IABLATION, EVENTBPIC20DABLATION, EVENTBPIC20IABLATION, EVENTEnvPermitABLATION,
+    EVENTHelpDeskABLATION, EVENTHospitalABLATION, EVENTSepsisABLATION, EVENTTrafficfinesABLATION)    
 # back to the original implementation     
+
 from graphgps.loader.dataset.coco_superpixels import COCOSuperpixels
 from graphgps.loader.dataset.malnet_tiny import MalNetTiny
 from graphgps.loader.dataset.voc_superpixels import VOCSuperpixels
@@ -197,8 +205,50 @@ def load_dataset_master(format, name, dataset_dir):
             dataset = preformat_EVENTBPIC15M4(dataset_dir)  
             
         elif pyg_dataset_id == 'EVENTBPIC15M5':
-            dataset = preformat_EVENTBPIC15M5(dataset_dir)  
-            
+            dataset = preformat_EVENTBPIC15M5(dataset_dir)
+        
+        #extra conditions for ablation study:
+        elif pyg_dataset_id == 'EVENTBPIC13CABLATION':
+            dataset = preformat_EVENTBPIC13CABLATION(dataset_dir)
+        elif pyg_dataset_id == 'EVENTBPIC15M1ABLATION':
+            dataset = preformat_EVENTBPIC15M1ABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC15M2ABLATION':
+            dataset = preformat_EVENTBPIC15M2ABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC15M3ABLATION':
+            dataset = preformat_EVENTBPIC15M3ABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC15M4ABLATION':
+            dataset = preformat_EVENTBPIC15M4ABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC15M5ABLATION':
+            dataset = preformat_EVENTBPIC15M5ABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC12ABLATION':
+            dataset = preformat_EVENTBPIC12ABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC12AABLATION':
+            dataset = preformat_EVENTBPIC12AABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC12CABLATION':
+            dataset = preformat_EVENTBPIC12CABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC12CWABLATION':
+            dataset = preformat_EVENTBPIC12CWABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC12OABLATION':
+            dataset = preformat_EVENTBPIC12OABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC12WABLATION':
+            dataset = preformat_EVENTBPIC12WABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC13IABLATION':
+            dataset = preformat_EVENTBPIC13IABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC20DABLATION':
+            dataset = preformat_EVENTBPIC20DABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTBPIC20IABLATION':
+            dataset = preformat_EVENTBPIC20IABLATION(dataset_dir)  
+        elif pyg_dataset_id == 'EVENTEnvPermitABLATION':
+            dataset = preformat_EVENTEnvPermitABLATION(dataset_dir) 
+        elif pyg_dataset_id == 'EVENTHelpDeskABLATION':
+            dataset = preformat_EVENTHelpDeskABLATION(dataset_dir) 
+        elif pyg_dataset_id == 'EVENTHospitalABLATION':
+            dataset = preformat_EVENTHospitalABLATION(dataset_dir) 
+        elif pyg_dataset_id == 'EVENTSepsisABLATION':
+            dataset = preformat_EVENTSepsisABLATION(dataset_dir) 
+        elif pyg_dataset_id == 'EVENTTrafficfinesABLATION':
+            dataset = preformat_EVENTTrafficfinesABLATION(dataset_dir) 
+
         # back to the original implementation
         
         elif pyg_dataset_id == 'VOCSuperpixels':
@@ -884,7 +934,128 @@ def preformat_EVENTBPIC15M5(dataset_dir):
     )
     return dataset
 
+#extra functions for ablation study:
+def preformat_EVENTBPIC13CABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC13CABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC15M1ABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC15M1ABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC15M2ABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC15M2ABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC15M3ABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC15M3ABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC15M4ABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC15M4ABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC15M5ABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC15M5ABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC12ABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC12ABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC12AABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC12AABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC12CABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC12CABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC12CWABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC12CWABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC12OABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC12OABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC12WABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC12WABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
 
+def preformat_EVENTBPIC13IABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC13IABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC20DABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC20DABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTBPIC20IABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTBPIC20IABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTEnvPermitABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTEnvPermitABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTHelpDeskABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTHelpDeskABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTHospitalABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTHospitalABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTSepsisABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTSepsisABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
+def preformat_EVENTTrafficfinesABLATION(dataset_dir):
+    dataset = join_dataset_splits(
+        [EVENTTrafficfinesABLATION(root=dataset_dir, split=split)
+         for split in ['train', 'val', 'test']]
+    )
+    return dataset
 
 # back to the original implementation
 
