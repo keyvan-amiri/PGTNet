@@ -143,3 +143,6 @@ cd PGTNet
 python ResultHandler.py --dataset_name 2015m1 --seed_number 42 --inference_config 'bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference'
 ```
 The aggregated dataframe will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**, and can be used for further analysis with respect to accuracy and earliness of predictions.
+
+**<a name="part6">6. Miscellaneous:</a>**
+**Erliness of predictions:**
