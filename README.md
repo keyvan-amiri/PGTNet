@@ -55,9 +55,9 @@ All datasets are publicly available at [the 4TU Research Data repository](https:
 
 This section of the implementation focuses on the conversion of an event log into a graph dataset. We already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. In this case, generated graph dataset are automatically downloaded and will be used to train and evaluaate PGTNet for remaining time prediction. In order to convert an event log into its corresponding graph dataset, you need to run the same python script with specific arguments:
 ```
-python GTconvertor.py conversion_configs envpermit.yaml --overwrite true
+python GTconvertor.py conversion_configs bpic15m1.yaml --overwrite true
 ```
-The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., envpermit.yaml) is the name of configuration file that is used for conversion. We will discuss this argument with more details in the followings. The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
+The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., bpic15m1.yaml) is the name of configuration file that is used for conversion. We will discuss this argument with more details in the followings. The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
 
 **Conversion Configuration Files:**
 
@@ -138,3 +138,8 @@ All configuration files required to inference with a PGTNet based on the event l
 In principle, the inference configuration files are similar to the training configuration files. The most important difference is that, the **train.mode** is set to **"event-inference"** instead of "custom". The inference configuration file additionally include another parameter called **pretrained.dir** by which we specify the folder that contais training results. For instance it can be something like this: `/home/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest`. Note that, you need to adjust the inference configuration file based on the location of the training results on your local machine.
 
 Running the inference script results in one dataframe (.csv) for each fold. Each row in this dataframe represent a test example for which the number of nodes, the number of edges, real remaining time and predicted remaining time are provided thorugh these columns: "num_node","num_edge","real_cycle_time","predicted_cycle_time". These files still need to be processed in order to: 1) provide the aggregated results over 5 folds, 2) match the rows to event prefixes, and 3) provide errors in days rather then normalized numbers in "real_cycle_time","predicted_cycle_time". This can be achived by navigating to the root directory of **PGTNet repository** and running the following script:
+```
+cd PGTNet
+python ResultHandler.py --dataset_name 2015m1 --seed_number 42 --inference_config 'bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference'
+```
+The final aggregated result will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**.
