@@ -157,3 +157,10 @@ As it is discussed in our paper, we conducted an ablation study for which we tra
 **PGTNet's results for holdout data split:**
 
 While we chose a 5-fold cross-validation strategy (CV=5) in our experiments, we also report the [results](https://github.com/keyvan-amiri/PGTNet/blob/main/holdout_results/README.md) obtained using holdout data splits for the sake of completeness. Note that, we used different training and configuration files for holdout data split which are not part of this repository.
+
+**Implementation of the baselines:**
+As it is discussed in our paper, we compare our approach against three others:
+1. DUMMY : A simple baseline that predicts the average remaining time of all training prefixes with the same length k as a given prefix.
+2. [DALSTM](https://ieeexplore.ieee.org/abstract/document/8285184): An LSTM-based approach that was recently shown to have superior results among LSTMs used for remaining time prediction. To implement this baseline, we used the github [repository](https://gitlab.citius.usc.es/efren.rama/pmdlcompararator) of a recently published [benchamrk](https://ieeexplore.ieee.org/abstract/document/9667311).
+3. [ProcessTransformer](https://arxiv.org/abs/2104.00721): A transformer-based approach designed to overcome LSTM’s limitations that generally outperforms DALSTM. To implement this baseline, we used its correspinding github [repository](https://github.com/Zaharah/processtransformer).
+
