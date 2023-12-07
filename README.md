@@ -95,17 +95,15 @@ python file_transfer.py
 ```
 This script copies 5 important python scripts which take care of all necessary adjustments to the original implementation of GPS Graph Transformer recipe:
 
-a. In `main.py` , the most important change is that a train mode called 'event-inference' is added to customize the inference step.
+a. In **main.py** , the most important change is that a train mode called 'event-inference' is added to customize the inference step.
 
-b. In `master_loader.py`, the most important change is that several new dataset classes are added to handle graph representation of event logs.
+b. In **master_loader.py**, the most important change is that several new dataset classes are added to handle graph representation of event logs.
 
-c. The python script `GTeventlogHandler.py` includes multiple `InMemoryDataset` Pytorch Geometric classes. We created one seperate class for each event log.
+c. The python script **GTeventlogHandler.py** includes multiple **InMemoryDataset** Pytorch Geometric classes. We created one seperate class for each event log.
 
-d. The python scripts `linear_edge_encoder.py` and `two_layer_linear_edge_encoder.py` are specifically designed for edge embedding in the remaining cycle time prediction problem.
+d. The python scripts **linear_edge_encoder.py** and **two_layer_linear_edge_encoder.py** are specifically designed for edge embedding in the remaining cycle time prediction problem.
 
-The `file_transfer.py` script also copy all required configuration files for training and evaluation of PGTNet to the relevant folder in **GPS repository**.
-
-Once abovementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to train PGTNet based on the event logs used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs).
+Once abovementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to train PGTNet based on the event logs used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs). The `file_transfer.py` script also copy all required configuration files for training and evaluation of PGTNet to the relevant folder in **GPS repository**.
 
 For training PGTNet, you need to navigate to the root directory of **GPS repository** and run `main.py` script:
 ```
