@@ -35,12 +35,12 @@ Once you setup a conda environement, clone the [GPS Graph Transformer repository
 ```
 git clone https://github.com/rampasek/GraphGPS
 ```
-This repository is called **GPS repository** in the remaining of this README file. Now, Navigate to the root directory for **GPS repository**, and clone the current repository (i.e., the **PGTNet repository**). By doing so, the **PGTNet repository** will be placed in the root directory of **GPS repository** meaning that the latter is the parent directory for the former.
+This repository is called **GPS repository** in the remaining of this README file. Now, Navigate to the root directory of **GPS repository**, and clone the current repository (i.e., the **PGTNet repository**). By doing so, the **PGTNet repository** will be placed in the root directory of **GPS repository** meaning that the latter is the parent directory of the former.
 ```
 cd GraphGPS
 git clone https://github.com/keyvan-amiri/PGTNet
 ```
-Now, we are ready to download all event logs that are used in our experiments. Note that, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/transformation). In case you want to start with training PGTNet, you can skip this step as well as the next step, and refer to [training](https://github.com/keyvan-amiri/PGTNet#part4) step. However, we have provided our source code for the sake of transparency. This source code also facilitates the use of PGTNet for other predictive process monitoring tasks (e.g., next activity prediction, next timestamp prediction, suffix prediction, outcome prediction), and indeed for a broader range of event logs. Our source code for conversion can also be adjusted to accomodate different graph representation of event prefixes.
+Now, we are ready to download all event logs that are used in our experiments. In priniciple, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph datasets [here](https://github.com/keyvan-amiri/PGTNet/tree/main/transformation). In case you want to start with training PGTNet, you can skip this step as well as the next step, and refer to [training](https://github.com/keyvan-amiri/PGTNet#part4) step. However, we have provided our source code for the sake of transparency. This source code also facilitates the use of PGTNet for other predictive process monitoring tasks (e.g., next activity prediction, next timestamp prediction, suffix prediction, outcome prediction), and indeed for a broader range of event logs. Our source code for conversion can also be adjusted to accomodate different graph representation of event prefixes.
 
 To download all event logs, navigate to the root directory of **PGTNet repository** and run `data-acquisition.py` script:
 ```
