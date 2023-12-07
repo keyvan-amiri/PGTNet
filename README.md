@@ -2,6 +2,7 @@
 This is the supplementary githob repository of the paper: "PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances".
 
 Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe. 
+
 <p align="center">
   <img src="https://github.com/keyvan-amiri/PGTNet/blob/main/PGTNet-Architecture.png">
 </p>
@@ -58,27 +59,9 @@ In order to convert an event log into its corresponding graph dataset, you need 
 ```
 python GTconvertor.py conversion_configs bpic15m1.yaml --overwrite true
 ```
-The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., bpic15m1.yaml) is the name of configuration file that defines parameters used for converting the event log into its corresponding graph dataset. All conversion configuration Files that are used in our experiment are collected here
+The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., bpic15m1.yaml) is the name of configuration file that defines parameters used for converting the event log into its corresponding graph dataset. All conversion configuration Files that are used in our experiment are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion_configs). The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
 
-The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
-
-[_:_](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion_configs)
-:
-| Parameter name | Parameter description |
-|----------|----------|
-| raw_dataset  | Name of the raw dataset (i.e., an event log in xes format).| 
-| event_attributes  | Name of the categorical attributes in event-level that are included in conversion process. **1**| 
-| event_num_att  | Name of the numerical attributes in event-level that are included in conversion process. **1**| 
-| case_attributes  | Name of the categorical attributes in case-level that are included in conversion process. **1**| 
-| case_num_att  |  Name of the numerical attributes in case-level that are included in conversion process. **1**|
-| train_val_test_ratio  |  Training, validation, and test data split ratio. By default, we use a 0.64-0.16-0.20 data split ratio. This means that we sort all traces based on the timestamps of their first events, and then use the first 64% for training set, the next 16% for validation set and the last 20% for test set. **2**|
-| target_normalization  | A boolean attribute (default: true) which specifies the normalization of target attribute. If set to true, the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one. **3**|
-<!-- This is not remaining of the table. -->
-**1.** The implementation provides the opportunity to experiment with different combinations for these variables. Therefore, it is easy to conduct ablation studies or investigate contribution of different attributes to the accuracy of predictions.
-**2.** This is equivalent to holdout data split. Later, we will discuss how we can use cross-fold validation data split using training configuration files.
-**3.** This normalization proved to be helpful because the target attribuite often has a highly skewed distribution.
-
-**Graph dataset structure:** The resultant graph dataset will be saved in a seperate folder which is located in the **datasets** folder in the root directory for **GPS repository**. Each graph dataset is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html) and represents a set of event prefixes (each attributed directed graph corresponds to an event prefix: an unfinished business process instance). For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called **split_mode** in the relevant training configuration file. 
+**Graph dataset structure:** The resultant graph dataset will be saved in a seperate folder which is located in the **datasets** folder in the root directory for **GPS repository**. Each graph dataset is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html) and represents a set of event prefixes. For each graph dataset, three separate files are generated for the training, validation, and test sets. 
 
 Note that, Running the `GTconvertor.py` script produces several additional output files, including:
 1. Encoders: One-hot encoders for both case-level and event-level attributes, implemented using scikit-learn.
