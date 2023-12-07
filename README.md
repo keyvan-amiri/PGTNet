@@ -136,6 +136,9 @@ The [**training configuration files**](https://github.com/keyvan-amiri/PGTNet/tr
 
 Training results are saved in a seperate folder which is located in the **results** folder in the root directory of **GPS repository**. Name of this folder is always equivalent to the name of the configuration file that is used for training. For instance running the previous command produces this folder: **bpic2015m1-GPS+LapPE+RWSE-ckptbest**
 
+This folder contains the best models (i.e., checkpoints) for each of 5 different folds. The checkpoint files can be used for inference with PGTNet  
+based on the validation error  from training step
+
 **<a name="part5">5. Inference with PGTNet:</a>**
 
 The inference (i.e., get prediction of PGTNet for all examples in the test set) can be done similar to the training step. To do so, run commands like: 
@@ -149,8 +152,6 @@ In principle, the inference configuration files are similar to the training conf
 pretrained:
   dir: /home/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest #the location of the training results on your system
 ```
-
-the best checkpoint from training step
 
 Running the inference script results in one dataframe (.csv) for each fold. Each row in this dataframe represent a test example for which the number of nodes, the number of edges, real remaining time and predicted remaining time are provided thorugh these columns: "num_node","num_edge","real_cycle_time","predicted_cycle_time". These files still need to be processed in order to: 1) provide the aggregated results over 5 folds, 2) match the rows to event prefixes, and 3) provide errors in days rather then normalized numbers in "real_cycle_time","predicted_cycle_time". This can be achived by navigating to the root directory of **PGTNet repository** and running the following script:
 ```
