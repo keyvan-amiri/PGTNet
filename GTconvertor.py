@@ -380,6 +380,7 @@ def main(directory, yml_file, overwrite):
                                                                         event_attributes, 
                                                                         case_attributes_full,
                                                                         event_log, log)
+        """
         # Save some important results (might be useful for interpretation)
         transformation_folder = os.path.join(os.getcwd(), "transformation")
         if not os.path.exists(transformation_folder):
@@ -410,7 +411,7 @@ def main(directory, yml_file, overwrite):
         print('Minimum values for numerical event attributes', event_min_num_list)   
         print('Maximum values for numerical event attributes', event_max_num_list)
         #print('Node class integer representation:', node_class_dict)
-            
+        """   
         # Now the main part for converting prefixes into directed attributed graphs
         removed_cases = [] # a list to collect removed cases (any case with length less than 3)
         idx = 0 # index for graphs
@@ -475,6 +476,7 @@ def main(directory, yml_file, overwrite):
             pickle.dump(file_save_list[address_counter], save_flie)
             save_flie.close()
         
+        """
         # save removed cases (might be required for more analysis)
         save_address = osp.join(dataset_path2, 'removed_cases.pt')
         save_flie = open(save_address, "wb")
@@ -534,7 +536,8 @@ def main(directory, yml_file, overwrite):
         print('mean cycle time for test:', target_mean)
         print('std cycle time for test:', target_std) 
         print('max cycle time for test:', target_max)
-
+        """
+        
     except FileNotFoundError:
         print("File not found. Please provide a valid file path.")
     except yaml.YAMLError as e:
