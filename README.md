@@ -3,7 +3,7 @@ This is the supplementary githob repository of the paper: "PGTNet: A Process Gra
 
 Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe. 
 <p align="center">
-  <img src="https://github.com/keyvan-amiri/PGTNet/blob/main/PGTNet%20Architecture.png">
+  <img src="https://github.com/keyvan-amiri/PGTNet/blob/main/PGTNet-Architecture.png">
 </p>
 
 **<a name="part1">1. Set up a Python environement to work with GPS Graph Transformers:</a>**
