@@ -115,7 +115,7 @@ python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_mul
 ```
 As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated PGTNet using three different random seeds. These random seeds are 42, 56, 89. Each time you want to train PGTNet for specific event log and specific seed number, you should adjust the **training configuration file** name, and the seed number in this command.
 
-The [**training configuration files**](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs) include all required training hyperparameters. Following table briefly discusses some the most important parameters:
+The [**training configuration files**](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs) include all required training hyperparameters. Following table briefly discusses the most important parameters:
 
 | Parameter name | Parameter description |
 |----------|----------|
