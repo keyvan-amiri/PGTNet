@@ -27,7 +27,7 @@ pip install pm4py
 
 conda clean --all
 ```
-Note that we included pip install command required for working with event log data (i.e., [pm4py](https://pm4py.fit.fraunhofer.de/) library). For other libraries, namely PyYAML numpy scikit-learn requirements should be already satisfied. Therefore, we do not need to install them separately (commented in the above piece of commands). 
+Note that, we also included pip install for [pm4py](https://pm4py.fit.fraunhofer.de/) library to facilitate working with event log data. For other libraries (PyYAML, numpy, scikit-learn) requirements should be already satisfied. Therefore, you do not need to install them separately. 
 
 **<a name="part2">2. Clone repositories and download event logs:</a>**
 
