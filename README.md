@@ -2,8 +2,9 @@
 This is the supplementary githob repository of the paper: "PGTNet: A Process Graph Transformer Network for Remaining Time Prediction of Business Process Instances".
 
 Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe. 
-
-![PGTNet Architecture](https://github.com/keyvan-amiri/PGTNet/blob/main/GPS%20architecture.pdf)
+<p align="center">
+  <img src="https://github.com/keyvan-amiri/PGTNet/blob/main/GPS%20architecture.pdf">
+</p>
 
 **<a name="part1">1. Set up a Python environement to work with GPS Graph Transformers:</a>**
 
