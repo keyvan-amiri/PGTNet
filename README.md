@@ -82,7 +82,7 @@ Note that, Running the `GTconvertor.py` script produces several additional outpu
 2. Activity Classes Dictionary: A dictionary that defines activity classes.
 3. Filtered Cases: A list of case IDs for cases that do not have at least three events.
 4. Histogram: A PNG file that visualizes the distribution of target attribute values.
-5. 
+
 All additional ouputs are saved in a separate folder called **transformation** in the root directory of **PGTNet repository**. 
 
 **Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/PGTNet/tree/main/graph_dataset_statistics).
