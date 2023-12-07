@@ -105,14 +105,14 @@ d. The python scripts **linear_edge_encoder.py** and **two_layer_linear_edge_enc
 
 Once abovementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to train PGTNet based on the event logs used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs). The **file_transfer.py** script also copy all required configuration files for training and evaluation of PGTNet to the relevant folder in **GPS repository**.
 
-For training PGTNet, you need to navigate to the root directory of **GPS repository** and run `main.py` script:
+For training PGTNet, you need to navigate to the root directory of **GPS repository** and run **main.py** script:
 ```
 cd ..
 python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest.yaml run_multiple_splits [0,1,2,3,4] seed 42
 ```
 As we mentioned in our paper, to evaluate robustness of our approach we trained and evaluated PGTNet using three different random seeds. These random seeds are 42, 56, 89. Each time you want to train PGTNet for specific event log and specific seed number, you should adjust the configuration file name, and the seed number in this command.
 
-The configuration file includes all required training hyperparameters. We briefly discuss some the most important parameters here:
+The configuration file includes all required training hyperparameters. Following table briefly discusses some the most important parameters:
 
 | Parameter name | Parameter description |
 |----------|----------|
