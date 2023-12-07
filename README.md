@@ -58,10 +58,12 @@ In order to convert an event log into its corresponding graph dataset, you need 
 ```
 python GTconvertor.py conversion_configs bpic15m1.yaml --overwrite true
 ```
-The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., bpic15m1.yaml) is the name of configuration file that is used for conversion. We will discuss this argument with more details in the followings. The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
+The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., bpic15m1.yaml) is the name of configuration file that defines parameters used for converting the event log into its corresponding graph dataset. All conversion configuration Files that are used in our experiment are collected here
 
-[_Conversion Configuration Files:_](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion_configs)
-Each conversion configuration file defines parameters used for converting the event log into its corresponding graph dataset:
+The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
+
+[_:_](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion_configs)
+:
 | Parameter name | Parameter description |
 |----------|----------|
 | raw_dataset  | Name of the raw dataset (i.e., an event log in xes format).| 
