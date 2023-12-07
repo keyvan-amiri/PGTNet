@@ -48,64 +48,64 @@ def eventlog_class_provider(name_of_dataset):
 
 def mean_cycle_norm_factor_provider(dataset):
     
-    if dataset.lower() == 'helpdesk':
+    if dataset.lower() == 'helpdesk' or ("EVENTHelpDesk" in dataset):
         mean_cycle = 40.90
         normalization_factor = 59.99496528
-    elif dataset == "BPIC20_InternationalDeclarations" or dataset == "2020I":
+    elif dataset == "BPIC20_InternationalDeclarations" or dataset == "2020I" or ("EVENTBPIC20I" in dataset):
         mean_cycle = 86.50
         normalization_factor = 742
-    elif dataset == "BPIC20_DomesticDeclarations" or dataset == "2020D":
+    elif dataset == "BPIC20_DomesticDeclarations" or dataset == "2020D" or ("EVENTBPIC20D" in dataset):
         mean_cycle = 11.50
         normalization_factor = 469.2363
-    elif dataset.lower() == 'envpermit' or dataset == "env_permit":
+    elif dataset.lower() == 'envpermit' or dataset == "env_permit" or ("EVENTEnvPermit" in dataset):
         mean_cycle = 5.41
         normalization_factor = 275.8396
-    elif dataset == "BPI_Challenge_2013I" or dataset == '2013I':
+    elif dataset == "BPI_Challenge_2013I" or dataset == '2013I' or ("EVENTBPIC13I" in dataset):
         mean_cycle = 12.08
         normalization_factor = 771.351770833333
-    elif dataset == "BPI_Challenge_2013C" or dataset == '2013C':
+    elif dataset == "BPI_Challenge_2013C" or dataset == '2013C' or ("EVENTBPIC13C" in dataset):
         mean_cycle = 178.88
         normalization_factor = 2254.84850694444 
-    elif dataset == "BPI_Challenge_2012" or dataset == '2012':
+    elif dataset == "BPI_Challenge_2012" or dataset == '2012' or ("EVENTBPIC12" in dataset):
         mean_cycle = 8.60
         normalization_factor = 137.22148162037
-    elif dataset == "BPI_Challenge_2012C" or dataset == '2012C':
+    elif dataset == "BPI_Challenge_2012C" or dataset == '2012C' or ("EVENTBPIC12C" in dataset):
         mean_cycle = 8.61
         normalization_factor = 91.4552796412037
-    elif dataset == "BPI_Challenge_2012W" or dataset == '2012W':
+    elif dataset == "BPI_Challenge_2012W" or dataset == '2012W' or ("EVENTBPIC12W" in dataset):
         mean_cycle = 11.70
         normalization_factor = 137.220982743055
-    elif dataset == "BPI_Challenge_2012CW" or dataset == '2012CW':
+    elif dataset == "BPI_Challenge_2012CW" or dataset == '2012CW' or ("EVENTBPIC12CW" in dataset):
         mean_cycle = 11.40
         normalization_factor = 91.040850324074
-    elif dataset == "BPI_Challenge_2012O" or dataset == '2012O':
+    elif dataset == "BPI_Challenge_2012O" or dataset == '2012O' or ("EVENTBPIC12O" in dataset):
         mean_cycle = 17.18
         normalization_factor = 89.5486824537037
-    elif dataset == "BPI_Challenge_2012A" or dataset == '2012A':
+    elif dataset == "BPI_Challenge_2012A" or dataset == '2012A' or ("EVENTBPIC12A" in dataset):
         mean_cycle = 8.08
         normalization_factor = 91.4552796412037
-    elif dataset == "BPIC15_1" or dataset == '2015m1':
+    elif dataset == "BPIC15_1" or dataset == '2015m1' or ("EVENTBPIC15M1" in dataset):
         mean_cycle = 95.90
         normalization_factor = 1486
-    elif dataset == "BPIC15_2" or dataset == '2015m2':
+    elif dataset == "BPIC15_2" or dataset == '2015m2' or ("EVENTBPIC15M2" in dataset):
         mean_cycle = 160.30
         normalization_factor = 1325.9583
-    elif dataset == "BPIC15_3" or dataset == '2015m3':
+    elif dataset == "BPIC15_3" or dataset == '2015m3' or ("EVENTBPIC15M3" in dataset):
         mean_cycle = 62.20
         normalization_factor = 1512
-    elif dataset == "BPIC15_4" or dataset == '2015m4':
+    elif dataset == "BPIC15_4" or dataset == '2015m4' or ("EVENTBPIC15M4" in dataset):
         mean_cycle = 116.90
         normalization_factor = 926.9583
-    elif dataset == "BPIC15_5" or dataset == '2015m5':
+    elif dataset == "BPIC15_5" or dataset == '2015m5' or ("EVENTBPIC15M5" in dataset):
         mean_cycle = 98
         normalization_factor = 1343.9583
-    elif dataset.lower() == 'sepsis':
+    elif dataset.lower() == 'sepsis' or ("EVENTSepsis" in dataset):
         mean_cycle = 28.48
         normalization_factor = 422.323946759259
-    elif dataset.lower() == 'trafficfines' or dataset == "Traffic_Fines":
+    elif dataset.lower() == 'trafficfines' or dataset == "Traffic_Fines" or  ("EVENTTrafficfines" in dataset):
         mean_cycle = 341.60
         normalization_factor = 4372
-    elif dataset.lower() == 'hospital':
+    elif dataset.lower() == 'hospital' or ("EVENTHospital" in dataset): 
         mean_cycle = 127.24
         normalization_factor = 1035.4212037037
         
