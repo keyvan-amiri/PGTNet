@@ -8,7 +8,7 @@ Our approach consists of a data transformation from an event log to a graph data
 
 **<a name="part1">1. Set up a Python environement to work with GPS Graph Transformers:</a>**
 
-GPS Graph Transformers recipe is implemented based on the PyTorch machine learning framework, and it utlizes [PyG](https://pytorch-geometric.readthedocs.io/en/latest/) (PyTorch Geometric) library as well as a low-level Graph Neural Network library called [pyg-lib](https://pyg-lib.readthedocs.io/en/latest/index.html). In order to be able to work with GPS Graph Transformers recipe, you need to set up a Python environement with Conda as suggested [here](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda). To set up such an environement:
+GPS Graph Transformers recipe is implemented based on the PyTorch machine learning framework, and it utlizes [PyG](https://pytorch-geometric.readthedocs.io/en/latest/) (PyTorch Geometric) library. In order to be able to work with GPS Graph Transformers, you need to set up a Python environement with Conda as suggested [here](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda). To set up such an environement:
 ```
 conda create -n graphgps python=3.10
 conda activate graphgps
@@ -30,7 +30,7 @@ pip install pm4py
 
 conda clean --all
 ```
-Note that, we also included pip install for [pm4py](https://pm4py.fit.fraunhofer.de/) library to facilitate working with event log data. For other libraries (PyYAML, numpy, scikit-learn) requirements should be already satisfied. Therefore, you do not need to install them separately. 
+Note that, we also included pip install for [pm4py](https://pm4py.fit.fraunhofer.de/) library to facilitate working with event log data. 
 
 **<a name="part2">2. Clone repositories and download event logs:</a>**
 
