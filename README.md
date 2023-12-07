@@ -3,6 +3,8 @@ This is the supplementary githob repository of the paper: "PGTNet: A Process Gra
 
 Our approach consists of a data transformation from an event log to a graph dataset, and training a neural network based on the [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS) recipe. 
 
+![PGTNet Architecture](https://github.com/keyvan-amiri/PGTNet/blob/main/GPS%20architecture.pdf)
+
 **<a name="part1">1. Set up a Python environement to work with GPS Graph Transformers:</a>**
 
 GPS Graph Transformers recipe is implemented based on the PyTorch machine learning framework, and it utlizes [PyG](https://pytorch-geometric.readthedocs.io/en/latest/) (PyTorch Geometric) library as well as a low-level Graph Neural Network library called [pyg-lib](https://pyg-lib.readthedocs.io/en/latest/index.html). In order to be able to work with GPS Graph Transformers recipe, you need to set up a Python environement with Conda as suggested [here](https://github.com/rampasek/GraphGPS#python-environment-setup-with-conda). To set up such an environement:
