@@ -60,11 +60,22 @@ python GTconvertor.py conversion_configs bpic15m1.yaml --overwrite true
 The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., bpic15m1.yaml) is the name of configuration file that is used for conversion. We will discuss this argument with more details in the followings. The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
 
 [_Conversion Configuration Files:_](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion_configs)
-Each conversion configuration file defines global variables specific to the dataset. These variables are used for converting the event log into its corresponding graph dataset and include:
-1. `raw_dataset`: name of the raw dataset (i.e., event log).
-2. `event_attributes`, `event_num_att`, `case_attributes`, `case_num_att`: Categorical and numerical attribute names at both the event-level and case-level. The implementation provides the opportunity to experiment with different combinations for these variables. Therefore, it is easy to conduct ablation studies or investigate contribution of different attributes to the accuracy of predictions. 
-3. `train_val_test_ratio`: Training, validation, and test data ratio. By default, we use a 0.64-0.16-0.20 data split ratio. This means that we sort all traces based on the timestamps of their first events, and then use the first 64% for training set, the next 16% for validation set and the last 20% for test set. This is equivalent to holdout data split. Later, we will discuss how we can use cross-fold validation data split using training configuration files.
-4. A boolean attribute called `target_normalization`. When `target_normalization` is set to True (the default value), the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one. This normalization proved to be helpful because the target attribuite often has a highly skewed distribution.
+Each conversion configuration file defines parameters used for converting the event log into its corresponding graph dataset:
+| Parameter name | Parameter description |
+|----------|----------|
+| raw_dataset  | Name of the raw dataset (i.e., an event log in xes format).| 
+| event_attributes  | Name of the categorical attributes in event-level that are included in conversion process.1| 
+| event_num_att  | Name of the numerical attributes in event-level that are included in conversion process.1| 
+| case_attributes  | Name of the categorical attributes in case-level that are included in conversion process.1| 
+| case_num_att  |  Name of the numerical attributes in case-level that are included in conversion process.1|
+| train_val_test_ratio  |  Training, validation, and test data split ratio. By default, we use a 0.64-0.16-0.20 data split ratio. This means that we sort all traces based on the timestamps of their first events, and then use the first 64% for training set, the next 16% for validation set and the last 20% for test set.2|
+| target_normalization  | A boolean attribute (default: true) which specifies the normalization of target attribute. If set to true, the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one.|
+<!-- This is not remaining of the table. -->
+1.The implementation provides the opportunity to experiment with different combinations for these variables. Therefore, it is easy to conduct ablation studies or investigate contribution of different attributes to the accuracy of predictions. 
+
+2.This is equivalent to holdout data split. Later, we will discuss how we can use cross-fold validation data split using training configuration files.
+
+3. This normalization proved to be helpful because the target attribuite often has a highly skewed distribution.
 
 _The output for conversion step:_**** The resultant graph dataset will be saved in a seperate folder which is located in the **datasets** folder in the root directory for **GPS repository**. Each graph dataset is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html) and represents a set of event prefixes (each attributed directed graph corresponds to an event prefix: an unfinished business process instance). For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called **split_mode** in the relevant training configuration file. 
 
