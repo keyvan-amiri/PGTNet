@@ -144,7 +144,13 @@ python main.py --cfg configs/GPS/bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinferen
 ```
 All **inference configuration files** that are used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/evaluation_configs).
 
-In principle, the inference configuration files are similar to the training configuration files. The most important difference is that, the **train.mode** is set to **"event-inference"** instead of "custom". The inference configuration file additionally include another parameter called **pretrained.dir** by which we specify the folder that contais training results. For instance it can be something like this: `/home/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest`. Note that, you need to adjust the inference configuration file based on the location of the training results on your local machine.
+In principle, the inference configuration files are similar to the training configuration files. The most important difference is that, the **"train.mode"** parameter is set to **"event-inference"** instead of "custom". The inference configuration files additionally include another parameter called **"pretrained.dir"** by which we specify the folder that contais training results. For instance, it can be something like this:
+```
+pretrained:
+  dir: /home/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest #the location of the training results on your system
+```
+
+the best checkpoint from training step
 
 Running the inference script results in one dataframe (.csv) for each fold. Each row in this dataframe represent a test example for which the number of nodes, the number of edges, real remaining time and predicted remaining time are provided thorugh these columns: "num_node","num_edge","real_cycle_time","predicted_cycle_time". These files still need to be processed in order to: 1) provide the aggregated results over 5 folds, 2) match the rows to event prefixes, and 3) provide errors in days rather then normalized numbers in "real_cycle_time","predicted_cycle_time". This can be achived by navigating to the root directory of **PGTNet repository** and running the following script:
 ```
