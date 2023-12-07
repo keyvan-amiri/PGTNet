@@ -59,7 +59,7 @@ python GTconvertor.py conversion_configs bpic15m1.yaml --overwrite true
 ```
 The first argument (i.e., conversion_configs) is a name of directory in which all required configuration files are located. The second argument (i.e., bpic15m1.yaml) is the name of configuration file that is used for conversion. We will discuss this argument with more details in the followings. The last argument called overwrite is a Boolean variable which provides some flexibility. If it is set to false, and you have already converted the event log into its corresponding graph dataset the script simply skip repeating the task. 
 
-_Conversion Configuration Files:_
+[_Conversion Configuration Files:_](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion_configs)
 Each conversion configuration file defines global variables specific to the dataset. These variables are used for converting the event log into its corresponding graph dataset and include:
 1. `raw_dataset`: name of the raw dataset (i.e., event log).
 2. `event_attributes`, `event_num_att`, `case_attributes`, `case_num_att`: Categorical and numerical attribute names at both the event-level and case-level. The implementation provides the opportunity to experiment with different combinations for these variables. Therefore, it is easy to conduct ablation studies or investigate contribution of different attributes to the accuracy of predictions. 
