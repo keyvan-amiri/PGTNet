@@ -103,7 +103,7 @@ c. The python script **GTeventlogHandler.py** includes multiple **InMemoryDatase
 
 d. The python scripts **linear_edge_encoder.py** and **two_layer_linear_edge_encoder.py** are specifically designed for edge embedding in the remaining cycle time prediction problem.
 
-Once abovementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to train PGTNet based on the event logs used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs). The `file_transfer.py` script also copy all required configuration files for training and evaluation of PGTNet to the relevant folder in **GPS repository**.
+Once abovementioned adjustments are done, training PGTNet is straightforward. Training is done using the relevant .yml configuration file which specifies all hyperparameters and training parameters. All configuration files required to train PGTNet based on the event logs used in our experiments are collected [here](https://github.com/keyvan-amiri/PGTNet/tree/main/training_configs). The **file_transfer.py** script also copy all required configuration files for training and evaluation of PGTNet to the relevant folder in **GPS repository**.
 
 For training PGTNet, you need to navigate to the root directory of **GPS repository** and run `main.py` script:
 ```
