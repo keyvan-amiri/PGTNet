@@ -63,16 +63,6 @@ The first argument (i.e., conversion_configs) is a name of directory in which al
 
 **Graph dataset structure:** The resultant graph dataset will be saved in a seperate folder which is located in the **datasets** folder in the root directory for **GPS repository**. Each graph dataset is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html) and represents a set of event prefixes. For each graph dataset, three separate files are generated for the training, validation, and test sets. 
 
-Note that, Running the `GTconvertor.py` script produces several additional output files, including:
-1. Encoders: One-hot encoders for both case-level and event-level attributes, implemented using scikit-learn.
-2. Activity Classes Dictionary: A dictionary that defines activity classes.
-3. Filtered Cases: A list of case IDs for cases that do not have at least three events.
-4. Histogram: A PNG file that visualizes the distribution of target attribute values.
-
-All additional ouputs are saved in a separate folder called **transformation** in the root directory of **PGTNet repository**. 
-
-**Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/PGTNet/tree/main/graph_dataset_statistics).
-
 **<a name="part4">4. Training a PGTNet for remaining time prediction:</a>**
 
 To train and evaluate PGTNet, we employ the implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). However, in order to use it for remaining time prediction of business process instances, you need to adjust some part of the original implementation. This can be achieved by running the following command:
