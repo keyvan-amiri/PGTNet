@@ -54,8 +54,6 @@ All event logs utilized in our experiments are publicly available at [the 4TU Re
 
 **<a name="part3">3. Converting an event log into a graph dataset:</a>**
 
-This section of the implementation focuses on the conversion of an event log into a graph dataset. We already uploaded the resultant graph dataset [here](https://github.com/keyvan-amiri/PGTNet/tree/main/conversion/transformation). Therefore, this step can be skipped if you are not intreseted in conducting more experiments with feature engineering. We have provided our source code for the sake of transparency. This source code also facilitates the use of PGTNet for other predictive process monitoring tasks (e.g., next activity prediction, next timestamp prediction, suffix prediction, outcome prediction), and indeed for a broader range of event logs. Our source code for conversion can also be adjusted to accomodate different graph representation of event prefixes.
-
 In order to convert an event log into its corresponding graph dataset, you need to run the same python script with specific arguments:
 ```
 python GTconvertor.py conversion_configs bpic15m1.yaml --overwrite true
