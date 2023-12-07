@@ -134,7 +134,7 @@ The [**training configuration files**](https://github.com/keyvan-amiri/PGTNet/tr
 | optim | Specifies the most important design options with respect to the optimizer. For instance, **optim.optimizer** specifies the optimizer type and in our case is always set to **adamW**. The **optim.base_lr** and **optim.weight_decay** define base learning rate and weight decay, respectively. The **optim.max_epoch** specifies number of training epochs, while **optim.scheduler** and **optim.num_warmup_epochs** specify type of schedule (in our case always **cosine_with_warmup**) and number of warmup epochs. |
 <!-- This is not remaining of the table. -->
 
-Training results are saved in a seperate folder which is located in the **results** folder in the root directory of **GPS repository**. Name of this folder is always equivalent to the name of the configuration file that is used for training. For instance running the previous command produces the folder `bpic2015m1-GPS+LapPE+RWSE-ckptbest`. 
+Training results are saved in a seperate folder which is located in the **results** folder in the root directory of **GPS repository**. Name of this folder is always equivalent to the name of the configuration file that is used for training. For instance running the previous command produces this folder: **bpic2015m1-GPS+LapPE+RWSE-ckptbest**
 
 **<a name="part5">5. Inference with PGTNet:</a>**
 
