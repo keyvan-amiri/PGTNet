@@ -47,7 +47,7 @@ To download all event logs, navigate to the root directory of **PGTNet repositor
 cd PGTNet
 python data-acquisition.py
 ```
-All event logs utilized in our experiments are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). The **data-acquisition.py** script download all event logs, and convert them into .xes format. It also generates additional event logs (BPIC12C, BPIC12W, BPIC12CW, BPIC12A, BPIC12O) from BPIC12 event log. Links that are used for downloading event logs are saved in **4TU-links.yaml** file. You can easily add other links to include more event logs into your experiments, or adjust the links if in future they would be relocated. Our implementation currently supports event logs in xes xes.gz and csv formats. In case your dataset is in csv format you might need to explicitly define labels that are used for mandatory event attributes, namely activity identifier, timestamp identifier, and case identifier (similar to what is done for Helpdesk event log in `data-acquisition.py`). 
+All event logs utilized in our experiments are publicly available at [the 4TU Research Data repository](https://data.4tu.nl/categories/13500?categories=13503). The **data-acquisition.py** script download all event logs, and convert them into .xes format. It also generates additional event logs (BPIC12C, BPIC12W, BPIC12CW, BPIC12A, BPIC12O) from BPIC12 event log. Links that are used for downloading event logs are saved in **4TU-links.yaml** file. You can easily add other links to include more event logs into your experiments, or adjust the links if in future they would be relocated. Our implementation currently supports event logs in xes xes.gz and csv formats. In case your dataset is in csv format you might need to explicitly define labels that are used for mandatory event attributes, namely activity identifier, timestamp identifier, and case identifier (similar to what is done for Helpdesk event log in **data-acquisition.py**). 
 
 **<a name="part3">3. Converting an event log into a graph dataset:</a>**
 
@@ -66,7 +66,9 @@ Each conversion configuration file defines global variables specific to the data
 3. `train_val_test_ratio`: Training, validation, and test data ratio. By default, we use a 0.64-0.16-0.20 data split ratio. This means that we sort all traces based on the timestamps of their first events, and then use the first 64% for training set, the next 16% for validation set and the last 20% for test set. This is equivalent to holdout data split. Later, we will discuss how we can use cross-fold validation data split using training configuration files.
 4. A boolean attribute called `target_normalization`. When `target_normalization` is set to True (the default value), the target attribute is normalized based on the duration of the longest case, ensuring values fall within the range of zero to one. This normalization proved to be helpful because the target attribuite often has a highly skewed distribution.
 
-**The output for conversion step:** The resultant graph dataset will be saved in a seperate folder which is located in the **datasets** folder in the root directory for **GPS repository**. We will discuss the structure of the resultant graph dataset later. Note that, Running the `GTconvertor.py` script produces several additional output files, including:
+_The output for conversion step:_**** The resultant graph dataset will be saved in a seperate folder which is located in the **datasets** folder in the root directory for **GPS repository**. Each graph dataset is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html) and represents a set of event prefixes (each attributed directed graph corresponds to an event prefix: an unfinished business process instance). For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called **split_mode** in the relevant training configuration file. 
+
+Note that, Running the `GTconvertor.py` script produces several additional output files, including:
 1. Encoders: One-hot encoders for both case-level and event-level attributes, implemented using scikit-learn.
 2. Activity Classes Dictionary: A dictionary that defines activity classes.
 3. Filtered Cases: A list of case IDs for cases that do not have at least three events.
@@ -74,12 +76,6 @@ Each conversion configuration file defines global variables specific to the data
 All additional ouputs are saved in a separate folder called **transformation** in the root directory of **PGTNet repository**. 
 
 **Note:** We provide additional text files describing general statistics for different graph datasets. See: [General statistics for graph datasets](https://github.com/keyvan-amiri/PGTNet/tree/main/graph_dataset_statistics).
-
-**Dataset Structure:** Each graph dataset which represent set of event prefixes (obtained from the event log) is a [PyG data object](https://pytorch-geometric.readthedocs.io/en/latest/modules/data.html). In this graph dataset each attributed directed graph corresponds to an event prefix: an unfinished business process instance.
-
-For each graph dataset, three separate files are generated for the training, validation, and test sets. These files are formatted as graph dataset objects compatible with PyTorch Geometric library. While our evaluation relies on cross-validation data split, we initially create separate graph dataset files for direct use in the holdout approach. Modifying data split approach can be easily done by using a variable called `split_mode` in the relevant training configuration file. 
-
-
 **<a name="part4">4. Training a PGTNet for remaining time prediction:</a>**
 
 To train and evaluate PGTNet, we employ the implementation of [GraphGPS: General Powerful Scalable Graph Transformers](https://github.com/rampasek/GraphGPS). However, in order to use it for remaining time prediction of business process instances, you need to adjust some part of the original implementation. This can be achieved by running the following command:
