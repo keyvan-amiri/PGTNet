@@ -1,9 +1,11 @@
 """
-this file is similar to the base transformer, but adjusted to handle ablation study!
-All changes are marked by "Achtung!"
+This script is the same as the GTconvertor.py with two exception marked by "Achtung!"
+Thses exceptions are required to handle ablation study in which we do not consider any data attribute,
+or the workload feature. For categorical/numnerical event-level/case-level attributes we use empty lists
+in the corresponding conversion configuration file. But, to exclude the workload feature we need two
+adjustments that are marked by "Achtung!" in current python script.
 """
 import yaml
-import sys
 import os
 import os.path as osp
 import numpy as np
@@ -15,7 +17,8 @@ from sklearn.preprocessing import OneHotEncoder
 import torch
 from torch_geometric.data import Data
 import pickle
-import matplotlib.pyplot as plt
+import argparse
+from PGTNetutils import eventlog_class_provider
 
 
 # Read user inputs from .yml file
@@ -333,11 +336,32 @@ def graph_conversion_func (split_log, removed_cases, idx, data_list, case_attrib
                 idx += 1
     return removed_cases, idx, data_list
 
-def main(yml_file):
+def main(directory, yml_file, overwrite):
     try:
-        user_inputs = read_user_inputs(yml_file)
-        # Import the event log
+        yml_file_path = os.path.join(directory, yml_file)
+        user_inputs = read_user_inputs(yml_file_path)
+        
+        # Check whether conversion is required or not.
         dataset_name = user_inputs.get('dataset_name')
+        dataset_name_no_ext = os.path.splitext(dataset_name)[0] #dataset name: without .xes extension
+        graph_dataset_class_name = eventlog_class_provider(dataset_name_no_ext)
+        output_address_list = ['train.pickle', 'val.pickle', 'test.pickle']
+        parent_directory = os.path.dirname(os.getcwd()) 
+        datasets_directory =  os.path.join(parent_directory, "datasets") #path to dataset folder
+        if not os.path.exists(datasets_directory):
+            os.makedirs(datasets_directory)
+        graph_dataset_path =  os.path.join(datasets_directory, graph_dataset_class_name)
+        graph_dataset_path_raw =  os.path.join(graph_dataset_path, "raw")
+        graph_dataset_path_processed =  os.path.join(graph_dataset_path, "processed")        
+        out_add0 = os.path.join(graph_dataset_path_raw, output_address_list[0])
+        out_add1 = os.path.join(graph_dataset_path_raw, output_address_list[1])
+        out_add2 = os.path.join(graph_dataset_path_raw, output_address_list[2])        
+        if not overwrite and os.path.exists(out_add0) and os.path.exists(out_add1) and os.path.exists(out_add2):
+            print(f"For event log: '{dataset_name_no_ext}' conversion is already done and overwrite is set to false.")
+            print("Stopping the code.")
+            return
+        
+        # Import the event log
         root_directory = os.path.dirname(os.path.abspath(__file__))
         dataset_path = os.path.join(root_directory, 'raw_dataset', dataset_name)
         log = xes_importer.apply(dataset_path)   
@@ -364,38 +388,7 @@ def main(yml_file):
                                                                         event_attributes, 
                                                                         case_attributes_full,
                                                                         event_log, log)
-        # Save some important results (might be useful for interpretation)
-        transformation_folder = os.path.join(os.getcwd(), "transformation")
-        if not os.path.exists(transformation_folder):
-            os.makedirs(transformation_folder)
-        dataset_name_no_ext = os.path.splitext(dataset_name)[0]
-        dataset_folder = os.path.join(transformation_folder, dataset_name_no_ext)
-        if not os.path.exists(dataset_folder):
-            os.makedirs(dataset_folder)
-        dataset_path2 = os.path.abspath(dataset_folder)
-        save_address_list = ['event_attribute_encoders.pt', 'case_attribute_encoders.pt', 
-                             'node_class_dict.pt']        
-        file_save_list = [attribute_encoder_list, case_encoder_list, node_class_dict]
-        for address_counter in range(len(save_address_list)):
-            save_address = os.path.join(dataset_path2, save_address_list[address_counter])
-            save_flie = open(save_address, "wb")
-            pickle.dump(file_save_list[address_counter], save_flie)
-            save_flie.close()
-        # Print important results
-        print("No cases in Training dataset:", len(train_log), " including", len(train_df), " events")
-        print("No of cases in Validation dataset:", len(val_log), " including", len(val_df), " events")
-        print("No of cases in Test dataset:", len(test_log), " including", len(test_df), " events")
-        print('node type dimension:', node_dim)
-        print('edge feature size:', edge_dim)        
-        print('Max case duration:', max_time_norm, 'goal: temporal features + target value normalization')
-        print('Maximum number of DF relationships cases in the log:', max_case_df) 
-        print('Maximum number of active cases in the log:', max_active_cases)
-        print('Minimum values for numerical case attributes', min_num_list)   
-        print('Maximum values for numerical case attributes', max_num_list)
-        print('Minimum values for numerical event attributes', event_min_num_list)   
-        print('Maximum values for numerical event attributes', event_max_num_list)
-        #print('Node class integer representation:', node_class_dict)
-            
+
         # Now the main part for converting prefixes into directed attributed graphs
         removed_cases = [] # a list to collect removed cases (any case with length less than 3)
         idx = 0 # index for graphs
@@ -446,82 +439,31 @@ def main(yml_file):
         random.shuffle(data_val)
         random.shuffle(data_test)
         # Save the training, validation, and test datasets
-        save_address_list = ['train.pickle', 'val.pickle', 'test.pickle']
-        file_save_list = [data_train, data_val, data_test]
-        for address_counter in range(len(save_address_list)):
-            save_address = osp.join(dataset_path2, save_address_list[address_counter])
+        file_save_list = [data_train, data_val, data_test]      
+        if not os.path.exists(graph_dataset_path):
+            os.makedirs(graph_dataset_path)
+        if not os.path.exists(graph_dataset_path_raw):
+            os.makedirs(graph_dataset_path_raw)
+        if not os.path.exists(graph_dataset_path_processed):
+            os.makedirs(graph_dataset_path_processed)           
+        
+        for address_counter in range(len(output_address_list)):
+            save_address = osp.join(graph_dataset_path_raw, output_address_list[address_counter])
             save_flie = open(save_address, "wb")
             pickle.dump(file_save_list[address_counter], save_flie)
             save_flie.close()
-        # save removed cases (might be required for more analysis)
-        save_address = osp.join(dataset_path2, 'removed_cases.pt')
-        save_flie = open(save_address, "wb")
-        pickle.dump(removed_cases, save_flie)
-        save_flie.close()
-        # print overal statistics about graphs  
-        print('Number of graphs in dataset:', len(data_list))
-        print('Number of graphs in training dataset:', len(data_train))
-        print('Number of graphs in validation dataset:', len(data_val))
-        print('Number of graphs in test dataset:', len(data_test))
-        print('An example for graph data:', data_list[0])
-        target_values = []
-        for i in range(len(data_list)):
-            target_values.append(data_list[i].y)
-        print('some examples for target attribute:', target_values[:5])
-        # plot the traget attribute distribution:
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        plt.hist(numpy_targets, bins='auto', alpha=0.7, rwidth=0.85)
-        plt.grid(axis='y', alpha=0.75)
-        plt.xlabel('Value')
-        plt.ylabel('Frequency')
-        plt.title(f'Distribution of targets for {dataset_name_no_ext}')
-        save_address = osp.join(dataset_path2, 'target_attribute_histogram.png')
-        plt.savefig(save_address)
-        plt.close()
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        print('Mean for target attribute:', target_mean)
-        print('Standard deviation for target attribute:', target_std)
-        target_values = []
-        for i in range(len(data_train)):
-            target_values.append(data_train[i].y)
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        target_max = np.max(numpy_targets)
-        print('mean cycle time for training:', target_mean)
-        print('std cycle time for training:', target_std) 
-        print('max cycle time for training:', target_max) 
-        target_values = []
-        for i in range(len(data_val)):
-            target_values.append(data_val[i].y)
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        target_max = np.max(numpy_targets)
-        print('mean cycle time for validation:', target_mean)
-        print('std cycle time for validation:', target_std) 
-        print('max cycle time for validation:', target_max) 
-        target_values = []
-        for i in range(len(data_test)):
-            target_values.append(data_test[i].y)
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        target_max = np.max(numpy_targets)
-        print('mean cycle time for test:', target_mean)
-        print('std cycle time for test:', target_std) 
-        print('max cycle time for test:', target_max)
-
+               
     except FileNotFoundError:
         print("File not found. Please provide a valid file path.")
     except yaml.YAMLError as e:
         print("Error while parsing the .yml file.")
         print(e)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python GTconvertor.py <yml_file>")
-    else:
-        yml_file = sys.argv[1]
-        main(yml_file)
+if __name__ == "__main__":    
+    parser = argparse.ArgumentParser(description="Converting event logs to graph datasets.")
+    parser.add_argument("directory", type=str, help="Directory where the conversion's configuration file is located")
+    parser.add_argument("yml_file", type=str, help="Name of the YAML file")
+    parser.add_argument("--overwrite", type=lambda x: x.lower() == 'true', help="Boolean indicating whether to overwrite")
+    
+    args = parser.parse_args()
+    main(args.directory, args.yml_file, args.overwrite)

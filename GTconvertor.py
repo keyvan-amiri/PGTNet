@@ -10,7 +10,6 @@ from sklearn.preprocessing import OneHotEncoder
 import torch
 from torch_geometric.data import Data
 import pickle
-import matplotlib.pyplot as plt
 import argparse
 from PGTNetutils import eventlog_class_provider
 
@@ -380,38 +379,7 @@ def main(directory, yml_file, overwrite):
                                                                         event_attributes, 
                                                                         case_attributes_full,
                                                                         event_log, log)
-        """
-        # Save some important results (might be useful for interpretation)
-        transformation_folder = os.path.join(os.getcwd(), "transformation")
-        if not os.path.exists(transformation_folder):
-            os.makedirs(transformation_folder)
-        dataset_folder = os.path.join(transformation_folder, dataset_name_no_ext)
-        if not os.path.exists(dataset_folder):
-            os.makedirs(dataset_folder)
-        dataset_path2 = os.path.abspath(dataset_folder)
-        save_address_list = ['event_attribute_encoders.pt', 'case_attribute_encoders.pt', 
-                             'node_class_dict.pt']        
-        file_save_list = [attribute_encoder_list, case_encoder_list, node_class_dict]
-        for address_counter in range(len(save_address_list)):
-            save_address = os.path.join(dataset_path2, save_address_list[address_counter])
-            save_flie = open(save_address, "wb")
-            pickle.dump(file_save_list[address_counter], save_flie)
-            save_flie.close()
-        # Print important results
-        print("No cases in Training dataset:", len(train_log), " including", len(train_df), " events")
-        print("No of cases in Validation dataset:", len(val_log), " including", len(val_df), " events")
-        print("No of cases in Test dataset:", len(test_log), " including", len(test_df), " events")
-        print('node type dimension:', node_dim)
-        print('edge feature size:', edge_dim)        
-        print('Max case duration:', max_time_norm, 'goal: temporal features + target value normalization')
-        print('Maximum number of DF relationships cases in the log:', max_case_df) 
-        print('Maximum number of active cases in the log:', max_active_cases)
-        print('Minimum values for numerical case attributes', min_num_list)   
-        print('Maximum values for numerical case attributes', max_num_list)
-        print('Minimum values for numerical event attributes', event_min_num_list)   
-        print('Maximum values for numerical event attributes', event_max_num_list)
-        #print('Node class integer representation:', node_class_dict)
-        """   
+ 
         # Now the main part for converting prefixes into directed attributed graphs
         removed_cases = [] # a list to collect removed cases (any case with length less than 3)
         idx = 0 # index for graphs
@@ -474,69 +442,7 @@ def main(directory, yml_file, overwrite):
             save_address = osp.join(graph_dataset_path_raw, output_address_list[address_counter])
             save_flie = open(save_address, "wb")
             pickle.dump(file_save_list[address_counter], save_flie)
-            save_flie.close()
-        
-        """
-        # save removed cases (might be required for more analysis)
-        save_address = osp.join(dataset_path2, 'removed_cases.pt')
-        save_flie = open(save_address, "wb")
-        pickle.dump(removed_cases, save_flie)
-        save_flie.close()
-        # print overal statistics about graphs  
-        print('Number of graphs in dataset:', len(data_list))
-        print('Number of graphs in training dataset:', len(data_train))
-        print('Number of graphs in validation dataset:', len(data_val))
-        print('Number of graphs in test dataset:', len(data_test))
-        print('An example for graph data:', data_list[0])
-        target_values = []
-        for i in range(len(data_list)):
-            target_values.append(data_list[i].y)
-        print('some examples for target attribute:', target_values[:5])
-        # plot the traget attribute distribution:
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        plt.hist(numpy_targets, bins='auto', alpha=0.7, rwidth=0.85)
-        plt.grid(axis='y', alpha=0.75)
-        plt.xlabel('Value')
-        plt.ylabel('Frequency')
-        plt.title(f'Distribution of targets for {dataset_name_no_ext}')
-        save_address = osp.join(dataset_path2, 'target_attribute_histogram.png')
-        plt.savefig(save_address)
-        plt.close()
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        print('Mean for target attribute:', target_mean)
-        print('Standard deviation for target attribute:', target_std)
-        target_values = []
-        for i in range(len(data_train)):
-            target_values.append(data_train[i].y)
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        target_max = np.max(numpy_targets)
-        print('mean cycle time for training:', target_mean)
-        print('std cycle time for training:', target_std) 
-        print('max cycle time for training:', target_max) 
-        target_values = []
-        for i in range(len(data_val)):
-            target_values.append(data_val[i].y)
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        target_max = np.max(numpy_targets)
-        print('mean cycle time for validation:', target_mean)
-        print('std cycle time for validation:', target_std) 
-        print('max cycle time for validation:', target_max) 
-        target_values = []
-        for i in range(len(data_test)):
-            target_values.append(data_test[i].y)
-        numpy_targets = np.array([np.array(target) for target in target_values])
-        target_std = np.std(numpy_targets)
-        target_mean = np.mean(numpy_targets)
-        target_max = np.max(numpy_targets)
-        print('mean cycle time for test:', target_mean)
-        print('std cycle time for test:', target_std) 
-        print('max cycle time for test:', target_max)
-        """
+            save_flie.close()      
         
     except FileNotFoundError:
         print("File not found. Please provide a valid file path.")
