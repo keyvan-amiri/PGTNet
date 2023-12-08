@@ -111,7 +111,7 @@ Training results are saved in a seperate folder which is located in the **result
 
 This folder contains the best models (i.e., checkpoints) for each of 5 different folds (best checkpoints are selected based on the minimum MAE over validation set). The checkpint files can be used for inference with PGTNet as it is discussed in the [next section](#part5).
 
-**<a name="part5">5. Inference with PGTNet:</a>**
+<a name="part5">**5. Inference with PGTNet:**</a>
 
 The inference (i.e., get prediction of PGTNet for all examples in the test set) can be done similar to the training step. To do so, run commands like: 
 ```
