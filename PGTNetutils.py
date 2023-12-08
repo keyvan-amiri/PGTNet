@@ -115,3 +115,49 @@ def mean_cycle_norm_factor_provider(dataset):
         normalization_factor = None
         
     return normalization_factor, mean_cycle
+
+def eventlog_name_provider(name_of_class):
+    if name_of_class == "EVENTBPIC15M1":
+        event_log_name = "BPIC15_1"
+    elif name_of_class == "EVENTBPIC15M2":
+        event_log_name = "BPIC15_2"
+    elif name_of_class == "EVENTBPIC15M3":
+        event_log_name = "BPIC15_3"
+    elif name_of_class == "EVENTBPIC15M4":
+        event_log_name = "BPIC15_4"
+    elif name_of_class == "EVENTBPIC15M5":
+        event_log_name = "BPIC15_5"
+    elif name_of_class == "EVENTBPIC12":
+        event_log_name = "BPI_Challenge_2012"
+    elif name_of_class == "EVENTBPIC12A":
+        event_log_name = "BPI_Challenge_2012A"
+    elif name_of_class == "EVENTBPIC12O":
+        event_log_name = "BPI_Challenge_2012O"
+    elif name_of_class == "EVENTBPIC12W":
+        event_log_name = "BPI_Challenge_2012W"
+    elif name_of_class == "EVENTBPIC12C":
+        event_log_name = "BPI_Challenge_2012C"
+    elif name_of_class == "EVENTBPIC12CW":
+        event_log_name = "BPI_Challenge_2012CW"
+    elif name_of_class == "EVENTBPIC13C":
+        event_log_name = "BPI_Challenge_2013C"
+    elif name_of_class == "EVENTBPIC13I":
+        event_log_name = "BPI_Challenge_2013I"
+    elif name_of_class == "EVENTBPIC20D":
+        event_log_name = "BPIC20_DomesticDeclarations"
+    elif name_of_class == "EVENTBPIC20I":
+        event_log_name = "BPIC20_InternationalDeclarations" 
+    elif name_of_class == "EVENTEnvPermit":
+        event_log_name = "env_permit"
+    elif name_of_class == "EVENTHelpDesk":
+        event_log_name = "HelpDesk"
+    elif name_of_class == "EVENTHospital":
+        event_log_name = "Hospital"
+    elif name_of_class == "EVENTSepsis":
+        event_log_name = "Sepsis"
+    elif name_of_class == "EVENTTrafficfines":
+        event_log_name = "Traffic_Fines"
+    else:
+        event_log_name = None
+        print('Error! no event log is related to this pythorch geometric dataset class.') 
+    return event_log_name

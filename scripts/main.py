@@ -2,9 +2,6 @@ import datetime
 import os
 import torch
 import logging
-import pandas as pd # Achtung: Not required in the original implementation of graphGPS framework
-import numpy as np # Achtung: Not required in the original implementation of graphGPS framework
-from PGTNet.PGTNetutils import mean_cycle_norm_factor_provider # Achtung!: to handle event-inference mode
 import graphgps  # noqa, register custom modules
 from graphgps.agg_runs import agg_runs
 from graphgps.optimizer.extra_optimizers import ExtendedSchedulerConfig
@@ -27,6 +24,10 @@ from torch_geometric import seed_everything
 from graphgps.finetuning import load_pretrained_model_cfg, \
     init_model_from_pretrained
 from graphgps.logger import create_logger
+# Achtung: the following imports are added to the original implementation of graphGPS framework
+import pandas as pd 
+import numpy as np 
+from PGTNet.PGTNetutils import mean_cycle_norm_factor_provider, eventlog_name_provider 
 
 
 torch.backends.cuda.matmul.allow_tf32 = True  # Default False in PyTorch 1.12+
@@ -225,7 +226,8 @@ if __name__ == '__main__':
     if cfg.train.mode == 'event-inference':
         prediction_dataframe = pd.concat(inference_dataframes, ignore_index=True)
         dataset_class_name = cfg.dataset.format.split('-')[1]
-        prediction_file_name = dataset_class_name + 'pgtnet_prediction_dataframe.csv'
+        event_log_name = eventlog_name_provider(dataset_class_name)
+        prediction_file_name = event_log_name + '-pgtnet_prediction_dataframe.csv'
         normalization_factor, mean_cycle = mean_cycle_norm_factor_provider(dataset_class_name)
         prediction_dataframe['MAE-days'] = (prediction_dataframe['real_cycle_time'] - prediction_dataframe['predicted_cycle_time']).abs() * normalization_factor
         evalauation_df_path = os.path.join(cfg.out_dir, prediction_file_name)
