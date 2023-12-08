@@ -109,8 +109,7 @@ The [**training configuration files**](https://github.com/keyvan-amiri/PGTNet/tr
 
 Training results are saved in a seperate folder which is located in the **results** folder in the root directory of **GPS repository**. Name of this folder is always equivalent to the name of the configuration file that is used for training. For instance running the previous command produces this folder: **bpic2015m1-GPS+LapPE+RWSE-ckptbest**
 
-This folder contains the best models (i.e., checkpoints) for each of 5 different folds. The checkpoint files can be used for inference with PGTNet  
-based on the validation error  from training step
+This folder contains the best models (i.e., checkpoints) for each of 5 different folds (best checkpoints are selected based on the minimum MAE over validation set). The checkpint files can be used for inference with PGTNet as it is discussed in the [next section](https://github.com/keyvan-amiri/PGTNet/tree/main/evaluation_configs).
 
 **<a name="part5">5. Inference with PGTNet:</a>**
 
