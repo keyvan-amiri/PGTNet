@@ -133,9 +133,11 @@ Running the inference script results in one dataframe including predictions for 
 While the mean of the **"MAE-days"** column is the average of mean absolute error for all 5 folds, prediction dataframe still needs to be processed for further performance analysis (e.g., earliness analysis). This further processing is required because it is not clear that each row of the prediction dataframe belongs to which trace (the prediction dataframe does not include case id in its columns), and what is the number of events of the prefix (remember that edges have weights, and therefore knowing number of nodes, and edges is not sufficient for inference about length of the prefix). Therefore, we need to use a matching algorithm (from rows of prediction dataframe to event prefixes in the original event log). This can be achieved by navigating to the root directory of **PGTNet repository** and running the following script:
 ```
 cd PGTNet
-python ResultHandler.py --dataset_name 2015m1 --seed_number 42 --inference_config 'bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference'
+python ResultHandler.py --dataset_name BPIC15_1 --seed_number 42 --inference_config 'bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference'
 ```
-The aggregated dataframe will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**, and can be used for further performance evaluation analysis.
+Note that the dataset_name should match the relevant part of the name of prediction dataframe, meaning that it should be one of the elements of this set: {"BPIC15_1", "BPIC15_2", "BPIC15_3", "BPIC15_4", "BPIC15_5", "BPI_Challenge_2012", "BPI_Challenge_2012A", "BPI_Challenge_2012O", "BPI_Challenge_2012W",  "BPI_Challenge_2012C", "BPI_Challenge_2012CW", "BPI_Challenge_2013C", "BPI_Challenge_2013I", "BPIC20_DomesticDeclarations", "BPIC20_InternationalDeclarations", "env_permit", "HelpDesk",  "Hospital", "Sepsis", "Traffic_Fines"}
+
+The result of this matching process is saved as a dataframe in the **PGTNet results** folder in the root directory of **PGTNet repository**, and can be used for further performance evaluation analysis.
 
 **<a name="part6">6. Miscellaneous:</a>**
 
