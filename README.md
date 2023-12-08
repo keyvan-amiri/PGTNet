@@ -109,7 +109,10 @@ The [**training configuration files**](https://github.com/keyvan-amiri/PGTNet/tr
 
 Training results are saved in a seperate folder which is located in the **results** folder in the root directory of **GPS repository**. Name of this folder is always equivalent to the name of the configuration file that is used for training. For instance running the previous command produces this folder: **bpic2015m1-GPS+LapPE+RWSE-ckptbest**
 
-This folder contains the best models (i.e., checkpoints) for each of 5 different folds (best checkpoints are selected based on the minimum MAE over validation set). The checkpint files can be used for inference with PGTNet as it is discussed in the [next section](#part5).
+This folder contains the best models (i.e., checkpoints) for each of 5 different folds (best checkpoints are selected based on the minimum MAE over validation set). The checkpint files can be used for inference with PGTNet as it is discussed in the [next section](#part5). You can also visualize learning curve using tensorboard:
+```
+tensorboard --logdir=work/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest/agg #the location of the training results on your system 
+```
 
 <a name="part5">**5. Inference with PGTNet:**</a>
 
@@ -122,7 +125,7 @@ All **inference configuration files** that are used in our experiments are colle
 In principle, the inference configuration files are similar to the training configuration files. The most important difference is that, the **"train.mode"** parameter is set to **"event-inference"** instead of "custom". The inference configuration files additionally include another parameter called **"pretrained.dir"** by which we specify the folder that contais training results. For instance, it can be something like this:
 ```
 pretrained:
-  dir: /home/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest #the location of the training results on your system
+  dir: /work/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest #the location of the training results on your system
 ```
 
 Running the inference script results in one dataframe (.csv) for each fold. Each row in this dataframe represent a test example for which the number of nodes, the number of edges, real remaining time and predicted remaining time are provided thorugh these columns: "num_node","num_edge","real_cycle_time","predicted_cycle_time". These files still need to be processed in order to: 1) provide the aggregated results over 5 folds, 2) match the rows to event prefixes, and 3) provide errors in days rather then normalized numbers in "real_cycle_time","predicted_cycle_time". This can be achived by navigating to the root directory of **PGTNet repository** and running the following script:
