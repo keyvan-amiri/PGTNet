@@ -150,7 +150,7 @@ if __name__ == '__main__':
         loaders = create_loader()
         loggers = create_logger()
         model = create_model()
-        # achtung! the second condition in and is added to the original implementation
+        # Achtung! the second condition in and is added to the original implementation
         if cfg.pretrained.dir and cfg.train.mode != 'event-inference':
             model = init_model_from_pretrained(
                 model, cfg.pretrained.dir, cfg.pretrained.freeze_main,
@@ -171,7 +171,7 @@ if __name__ == '__main__':
                                 "default train.mode, set it to `custom`")
             datamodule = GraphGymDataModule()
             train(model, datamodule, logger=True)
-        # achtung! the following is added to the original implementation of GraphGPS framework
+        # Achtung! the following is added to the original implementation of GraphGPS framework
         elif cfg.train.mode == 'event-inference':
             fold_address = cfg.pretrained.dir + f"/{run_id}/ckpt"
             # load the saved check point (Parameters with lowest validation loss)
@@ -195,9 +195,6 @@ if __name__ == '__main__':
             # set empty lists to create the final dataframe for each fold (run)
             num_node_list, num_edge_list, real_reamining_times, predictions = [], [], [], []
             evaluation_test_loader = loaders[2] # use only test set as the loader
-            #print('number of graphs in the training dataset', len(loaders[0]))
-            #print('number of graphs in the validation dataset', len(loaders[1]))
-            #print('number of graphs in the test dataset', len(evaluation_test_loader))
             with torch.no_grad():
                 for each_graph in evaluation_test_loader:                    
                     each_graph.to(device) # move the test example to device
@@ -210,10 +207,6 @@ if __name__ == '__main__':
                                      'real_cycle_time': real_reamining_times,
                                      'predicted_cycle_time': predictions}
             evalauation_test_dataframe = pd.DataFrame(Aggregated_graph_info) # convert to dataframe
-            ##base_evaluation_file_name = 'evaluation_test_dataframe'
-            ##dataframe_filename = f"{base_evaluation_file_name}_{run_id}.csv"
-            ##evalauation_df_path = os.path.join(cfg.out_dir, dataframe_filename)
-            ##evalauation_test_dataframe.to_csv(evalauation_df_path, index=False) # save dataframe
             inference_dataframes.append(evalauation_test_dataframe)
 
         # now, back to the original implementation
@@ -232,10 +225,10 @@ if __name__ == '__main__':
     if cfg.train.mode == 'event-inference':
         prediction_dataframe = pd.concat(inference_dataframes, ignore_index=True)
         dataset_class_name = cfg.dataset.format.split('-')[1]
-        #print(dataset_class_name)
+        prediction_file_name = dataset_class_name + 'pgtnet_prediction_dataframe.csv'
         normalization_factor, mean_cycle = mean_cycle_norm_factor_provider(dataset_class_name)
         prediction_dataframe['MAE-days'] = (prediction_dataframe['real_cycle_time'] - prediction_dataframe['predicted_cycle_time']).abs() * normalization_factor
-        evalauation_df_path = os.path.join(cfg.out_dir, 'pgtnet_prediction_dataframe.csv')
+        evalauation_df_path = os.path.join(cfg.out_dir, prediction_file_name)
         prediction_dataframe.to_csv(evalauation_df_path, index=False) # save prediction dataframe
         inference_end_time = datetime.datetime.now()
         inference_time = (inference_end_time - inference_start_time).total_seconds() * 1000
