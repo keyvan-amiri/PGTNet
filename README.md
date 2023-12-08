@@ -128,12 +128,14 @@ pretrained:
   dir: /work/kamiriel/GraphGPS/results/bpic2015m1-GPS+LapPE+RWSE-ckptbest #the location of the training results on your system
 ```
 
-Running the inference script results in one dataframe (.csv) including predictions for all event prefixes. Each row represents a graph representation of an event prefix for which number of nodes, number of edges, real remaining time (normalized),  predicted remaining time (normalized), and mean absolute error (in days) are provided thorugh different columns. While the mean of the column **"MAE-days"** is the average of mean absolut error for all 5 folds, the dataframe still needs further processing as it is not clear that the event prefix belongs to which trace (the dataframe does not include case id in its columns), and what is the number of events of the prefix (remember that edges have weights, and therefore knowing number of nodes, and edges is not sufficient for inference about length of the prefix). Therefore, we need to use a matching algorithm (from rows of prediction dataframe to event prefixes in the original event log) for further performance analysis (e.g., earliness analysis). This can be achieved by navigating to the root directory of **PGTNet repository** and running the following script:
+Running the inference script results in one dataframe including predictions for all event prefixes (We call it **prediction dataframe**). In prediction dataframe, each row represents a graph representation of an event prefix for which number of nodes, number of edges, real remaining time (normalized),  predicted remaining time (normalized), and mean absolute error (in days) are provided thorugh different columns.
+
+While the mean of the **"MAE-days"** column is the average of mean absolute error for all 5 folds, prediction dataframe still needs to be processed for further performance analysis (e.g., earliness analysis). This further processing is required because it is not clear that each row of the prediction dataframe belongs to which trace (the prediction dataframe does not include case id in its columns), and what is the number of events of the prefix (remember that edges have weights, and therefore knowing number of nodes, and edges is not sufficient for inference about length of the prefix). Therefore, we need to use a matching algorithm (from rows of prediction dataframe to event prefixes in the original event log). This can be achieved by navigating to the root directory of **PGTNet repository** and running the following script:
 ```
 cd PGTNet
 python ResultHandler.py --dataset_name 2015m1 --seed_number 42 --inference_config 'bpic2015m1-GPS+LapPE+RWSE-ckptbest-eventinference'
 ```
-The aggregated dataframe will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**, and can be used for further analysis with respect to accuracy and earliness of predictions.
+The aggregated dataframe will be saved in a folder called **PGTNet results** in the root directory of **PGTNet repository**, and can be used for further performance evaluation analysis.
 
 **<a name="part6">6. Miscellaneous:</a>**
 
