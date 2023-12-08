@@ -98,7 +98,7 @@ else:
     initial_dataframe = pd.DataFrame(data)
     
     # match predictions and data used for training. 
-    final_result_dataframe = pd.DataFrame(columns=list(initial_dataframe.columns) + ['predicted_cycle_time', 'MAE-days'])
+    final_result_dataframe = pd.DataFrame(columns=list(initial_dataframe.columns) + ['predicted_cycle_time'])
     # Iterate through the initial DataFrame
     for index, initial_row in initial_dataframe.iterrows():
         num_node = initial_row['num_node']
@@ -112,9 +112,10 @@ else:
             # Add the matched row to the final result DataFrame with "predicted_cycle_time"
 	    # if you are using older version of pandas you might need to replace "_append" by "append" in the following lines.
             match_data = initial_row._append(pd.Series([closest_match['predicted_cycle_time']], index=['predicted_cycle_time']))
-            match_data = initial_row._append(pd.Series([closest_match['MAE-days']], index=['MAE-days']))
             final_result_dataframe = final_result_dataframe._append(match_data, ignore_index=True)
     
+    normalization_factor, mean_cycle_time = mean_cycle_norm_factor_provider(dataset_name)
+    final_result_dataframe['MAE-days'] = (final_result_dataframe['real_cycle_time'] - final_result_dataframe['predicted_cycle_time']).abs() * normalization_factor
     final_result_dataframe.to_csv(csv_path, index=False)
 
 
