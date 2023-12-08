@@ -44,7 +44,7 @@ This repository is called **GPS repository** in the remaining of this README fil
 cd GraphGPS
 git clone https://github.com/keyvan-amiri/PGTNet
 ```
-Now, we are ready to download all event logs that are used in our experiments. In priniciple, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph datasets [here](https://github.com/keyvan-amiri/PGTNet/tree/main/transformation). In case you want to start with [training](https://github.com/keyvan-amiri/PGTNet#part4) a PGTNet, you can skip this step and the next on. In this case, generated graph dataset are automatically downloaded and will be used to train and evaluate PGTNet for remaining time prediction.
+Now, we are ready to download all event logs that are used in our experiments. In priniciple, downloading event logs and converting them to graph datasets are not mandatory steps for training PGTNet because we already uploaded the resultant graph datasets [here](https://github.com/keyvan-amiri/PGTNet/tree/main/transformation). In case you want to start with [training](https://github.com/keyvan-amiri/PGTNet#part4) a PGTNet, you can skip this step and the next one. In this case, generated graph dataset are automatically downloaded and will be used to train and evaluate PGTNet for remaining time prediction.
 
 To download all event logs, navigate to the root directory of **PGTNet repository** and run `data-acquisition.py` script:
 ```
