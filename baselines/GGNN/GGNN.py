@@ -25,7 +25,7 @@ import pandas as pd
 from ax.service.managed_loop import optimize
 
 ##############################################################################
-# Genral utility methods, and classes
+# General utility methods, and classes
 ##############################################################################
 
 def set_random_seed(seed):
