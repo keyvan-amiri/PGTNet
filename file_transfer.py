@@ -6,7 +6,7 @@ if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__)) #Root directory for PGTNet
     scripts_path = os.path.join(script_dir, "scripts") #path to the scripts folder
     train_conf_path = os.path.join(script_dir, "training_configs") #path to the training_configs folder
-    eval_conf_path = os.path.join(script_dir, "evaluation_configs") #path to the evaluation_configs folder
+    eval_conf_path = os.path.join(script_dir, "inference_configs") #path to the evaluation_configs folder
     gps_directory = os.path.dirname(script_dir) #Root directory for GraphGPS
     loader_path = os.path.join(gps_directory, "graphgps", "loader")
     dataset_handler_path = os.path.join(loader_path, "dataset")
