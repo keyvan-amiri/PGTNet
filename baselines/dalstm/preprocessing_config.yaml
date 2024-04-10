@@ -1,0 +1,101 @@
+# Define data attributes for all logs in the experiment
+BPI_2012:
+  event_attributes: ['org:resource'] 
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: ['AMOUNT_REQ'] 
+BPI_2012A:
+  event_attributes: ['org:resource'] 
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: ['AMOUNT_REQ'] 
+BPI_2012C:
+  event_attributes: ['org:resource'] 
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: ['AMOUNT_REQ']
+BPI_2012CW:
+  event_attributes: ['org:resource'] 
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: ['AMOUNT_REQ'] 
+BPI_2012O:
+  event_attributes: ['org:resource'] 
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: ['AMOUNT_REQ']
+BPI_2012W:
+  event_attributes: ['org:resource'] 
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: ['AMOUNT_REQ']   
+BPIC15_1:
+  event_attributes: ['org:resource', 'monitoringResource'] 
+  event_num_att: []  
+  case_attributes: ['caseStatus', 'last_phase', 'Responsible_actor', 'parts', 'termName', 'requestComplete', 'caseProcedure', 'Includes_subCases'] 
+  case_num_att: ['SUMleges'] 
+BPIC15_2:
+  event_attributes: ['org:resource', 'monitoringResource'] 
+  event_num_att: []  
+  case_attributes: ['caseStatus', 'last_phase', 'Responsible_actor', 'parts', 'termName', 'requestComplete', 'caseProcedure', 'Includes_subCases']
+  case_num_att: ['SUMleges'] 
+BPIC15_3:
+  event_attributes: ['org:resource', 'monitoringResource'] 
+  event_num_att: []  
+  case_attributes: ['caseStatus', 'last_phase', 'Responsible_actor', 'parts', 'termName', 'requestComplete', 'caseProcedure', 'Includes_subCases'] 
+  case_num_att: ['SUMleges'] 
+BPIC15_4:
+  event_attributes: ['org:resource', 'monitoringResource'] 
+  event_num_att: []  
+  case_attributes: ['caseStatus', 'last_phase', 'Responsible_actor', 'parts', 'termName', 'requestComplete', 'caseProcedure', 'Includes_subCases'] 
+  case_num_att: ['SUMleges'] 
+BPIC15_5:
+  event_attributes: ['org:resource', 'monitoringResource'] 
+  event_num_att: []  
+  case_attributes: ['caseStatus', 'last_phase', 'Responsible_actor', 'parts', 'termName', 'requestComplete', 'caseProcedure', 'Includes_subCases'] 
+  case_num_att: ['SUMleges'] 
+BPIC20_D:
+  event_attributes: ['org:resource', 'org:role'] 
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: ['Amount']
+BPIC20_I:  
+  event_attributes: ['org:resource', 'org:role'] 
+  event_num_att: []  
+  case_attributes: ['Permit TaskNumber', 'Permit OrganizationalEntity', 'Permit BudgetNumber', 'Permit ActivityNumber'] 
+  case_num_att: ['Amount', 'RequestedAmount', 'Permit RequestedBudget','AdjustedAmount', 'OriginalAmount'] 
+BPI_2013_I:
+  event_attributes: ['org:role', 'organization involved', 'organization country', 'resource country', 'impact', "org:group", "product", "org:resource"] # categorical event attributes
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: []
+BPI_2013_C:
+  event_attributes: ['org:group', 'org:role', 'organization country','resource country', 'impact', "org:resource"]
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: []
+env_permit:
+  event_attributes: ['org:group', 'org:resource']
+  event_num_att: []  
+  case_attributes: ['responsible', 'department', 'channel', 'group']
+  case_num_att: []
+Hospital:
+  event_attributes: ['isCancelled', 'caseType', 'speciality', 'blocked', 'isClosed', 'flagD', 'state', 'closeCode', 'actRed', 'actOrange', 'flagC', 'msgCount', 'version', 'msgType', 'msgCode']
+  event_num_att: []  
+  case_attributes: [] 
+  case_num_att: []
+HelpDesk:
+  event_attributes: ['org:resource', 'workgroup', 'seriousness_2', 'service_level' , 'service_type', 'customer']
+  event_num_att: [] 
+  case_attributes: ['responsible_section', 'support_section', 'product'] 
+  case_num_att: []
+Sepsis:
+  event_attributes: ['InfectionSuspected', 'org:group', 'DiagnosticBlood', 'DisfuncOrg', 'SIRSCritTachypnea', 'Hypotensie', 'SIRSCritHeartRate', 'Infusion', 'DiagnosticArtAstrup', 'DiagnosticIC', 'DiagnosticSputum', 'DiagnosticLiquor', 'DiagnosticOther', 'SIRSCriteria2OrMore', 'DiagnosticXthorax', 'SIRSCritTemperature', 'DiagnosticUrinaryCulture', 'SIRSCritLeucos', 'Oligurie', 'DiagnosticLacticAcid', 'Diagnose', 'Hypoxie', 'DiagnosticUrinarySediment', 'DiagnosticECG'] 
+  event_num_att: ['Age', 'Leucocytes', 'CRP', 'LacticAcid']  
+  case_attributes: [] 
+  case_num_att: []
+Traffic_Fine:
+  event_attributes: ['org:resource', 'dismissal', 'vehicleClass', 'article', 'notificationType', 'lastSent'] 
+  event_num_att: ['amount', 'totalPaymentAmount', 'points', 'expense', 'paymentAmount']  
+  case_attributes: [] 
+  case_num_att: [] 
