@@ -3,4 +3,4 @@ The original implementation includes a hyper-parameter search using AX library. 
 ```
 python GGNN.py --dataset HelpDesk --seed 42 --device 7 --trial 100
 ```
-In our pipeline, we only applied preprocessing and holdout data split (training and inference) to seed number 42. We also searched for the best hyperparameters for holdout data split just like the original implementation. We used the same best hyper-parameters for cross-fold validation data split. For this data split, we used three different random seeds to have fair comparison. If you want to use this code in other context or settings, do not remember to adjust the code. 
+In our pipeline, we only implemented preprocessing and holdout data split (training and inference) for seed 42. We also searched for the best hyperparameters for holdout data split just like the original implementation. We used the same best hyper-parameters for cross-fold validation data split. For this data split, we used three different random seeds to have fair comparison. If you want to use this code in other context or settings, do not remember to adjust the code. 
