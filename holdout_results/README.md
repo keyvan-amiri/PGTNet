@@ -1,4 +1,4 @@
-**PGTNet results for holdout data split:**
+**Results for holdout data split:**
 | Event log | Average cycle time (day) | DALSTM (MAE in days) | ProcessTransformer (MAE in days) | GGNN (MAE in days) |PGTNet (MAE in days)|
 |----------|----------|----------|----------|----------|----------|
 |Env.Permit| 5.41 | **1.37** | 2.99 |  | 1.46 |
