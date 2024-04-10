@@ -1,5 +1,1 @@
-Here, we present our implementation of DALSTM model.  
-
-All data attributes that are used by DALSTM model are included `preprocessing_config.yaml` file. Note that only categorical attributes in event level can be used by DALSTM model. We used the same attributes that are used by PGTNet to have a fair comparison. 
-
-In our pipeline, we only implemented preprocessing and holdout data split (training and inference) for seed 42. For cross-fold validation data split, we used three different random seeds to have fair comparison. If you want to use this code in other context or settings, do not remember to adjust the code.
+Here, we present the results for earliness analysis in separate folders. In the folder **100**, all prefixes all included, and we report MAE for all prefix lengths.  However, plots in this folder might be misleading as they also include outlier lengths which may consist of only few prefixes. Therefore, we decided to limit the prefix length for better visualization. in our [paper](https://arxiv.org/abs/2404.06267) we did the same and report the plots up to a length which corresponds to 90% of prefixes. Here, we also provide the results for 80% and 70% of prefixes in separate folders.
