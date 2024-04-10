@@ -1,3 +1,3 @@
-This directory includes all adjustments required for implementation of ProcessTransformer baseline. 
+Here, we present our implementation of ProcessTransformer model.  
 
-In order to replicate our experiments with cross-validation data split the implementation of **ProcessTransformer** repository should be adjusted based on the content of this  [**folder**](https://github.com/keyvan-amiri/PGTNet/tree/main/baselines/processtransformer/crossvalidation), while for holdout data split contents of this [**folder**](https://github.com/keyvan-amiri/PGTNet/tree/main/baselines/processtransformer/holdout) are relevant.
+In our pipeline, we only implemented preprocessing and holdout data split (training and inference) for seed 42. For cross-fold validation data split, we used three different random seeds to have fair comparison. If you want to use this code in other context or settings, do not remember to adjust the code.
