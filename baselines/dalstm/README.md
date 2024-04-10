@@ -1,7 +1,5 @@
 Here, we present our implementation of DALSTM model.  
 
-In order to extend this baselines to more event logs, `attributes.yaml` should be adjusted. This file includes name of all data attributes that are used by DALSTM. For instance, to extend DALSTM implementation to the BPIC15-1 event log we have to add the followings to the .yaml file:
+All data attributes that are used by DALSTM model are included `preprocessing_config.yaml` file. Note that only categorical attributes in event level can be used by DALSTM model. We used the same attributes that are used by PGTNet to have a fair comparison. 
 
-"BPIC15_1" : ['org:resource', 'monitoringResource']
-
-
+In our pipeline, we only implemented preprocessing and holdout data split (training and inference) for seed 42. For cross-fold validation data split, we used three different random seeds to have fair comparison. If you want to use this code in other context or settings, do not remember to adjust the code.
