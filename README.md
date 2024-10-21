@@ -151,7 +151,7 @@ As it is discussed in our paper, we conducted an ablation study for which we tra
 
 **PGTNet's results for holdout data split:**
 
-While we chose a 5-fold cross-validation strategy (CV=5) in our experiments, we also report the [results](https://github.com/keyvan-amiri/PGTNet/blob/main/holdout_results/README.md) obtained using holdout data splits for the sake of completeness. Note that, we used different training and configuration files for holdout data split which are not part of this repository.
+While we chose a 5-fold cross-validation strategy (CV=5) in our experiments, we also report the [results](https://github.com/keyvan-amiri/PGTNet/blob/main/holdout_results/README.md) obtained using holdout data splits for the sake of completeness. Note that, we used different training configuration files for holdout data split which can be found on the same [folder](https://github.com/keyvan-amiri/PGTNet/tree/main/holdout_results).
 
 **Implementation of the baselines:**
 As it is discussed in our paper, we compare our approach against three others:
